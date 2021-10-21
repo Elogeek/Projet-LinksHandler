@@ -1,0 +1,17 @@
+{
+    "name": "upto/projets",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Upto\\Projets\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "elogeek",
+            "email": "elodiechristin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
