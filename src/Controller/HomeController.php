@@ -7,7 +7,7 @@ use Elogeek\LinksHandler\Model\Manager\LinkManager;
 class  HomeController extends BaseController {
 
     /**
-     * Redirects into home page
+     * Display the homePage
      */
     public function showHome() {
         $links = (new LinkManager())->get();

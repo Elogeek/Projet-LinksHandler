@@ -7,7 +7,7 @@ use Elogeek\LinksHandler\Model\Manager\LinkManager;
 class LinkController extends BaseController {
 
     /**
-     * Redirects into add link page
+     * Redirects into addLink page
      */
     public function home() {
         self::render("addLink", "Ajout du lien");
@@ -29,12 +29,12 @@ class LinkController extends BaseController {
     }
 
     /**
-     * Redirects into update link page
+     * Redirects into updateLink page
      */
     public function update() {
         $link = (new LinkManager())->search(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
 
-        self::render("update.link", "Modifier de lien", [$link]);
+        self::render("updateLink", "Modifier de lien", [$link]);
     }
 
     /**

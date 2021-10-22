@@ -3,6 +3,7 @@ namespace Elogeek\LinksHandler\src\Controller;
 
 use Elogeek\LinksHandler\Controller\HomeController;
 use Elogeek\LinksHandler\Controller\LoginController;
+use Elogeek\LinksHandler\Controller\UserController;
 
 require '../vendor/autoload.php';
 
@@ -38,4 +39,4 @@ if(isset($_GET['controller'])) {
 else {
     (new HomeController())->showHome();
 }
-(new LoginController())->showLogin();
+(new UserController())->showLogin();

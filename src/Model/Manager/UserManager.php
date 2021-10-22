@@ -29,6 +29,10 @@ class UserManager {
         return false;
     }
 
+    /** return an user via id
+     * @param $mail
+     * @return User|null
+     */
     public function searchMail($mail): ?User {
 
         $req =DB::getInstance()->prepare("SELECT * FROM prefix_user WHERE mail = :mail");

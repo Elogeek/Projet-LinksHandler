@@ -47,7 +47,7 @@ class LinkManager {
     }
 
     /**
-     * Get all links
+     * Get all links via id
      * @param $id
      * @return Link|null
      */
@@ -63,7 +63,7 @@ class LinkManager {
     }
 
     /**
-     * Update a link into link table
+     * Update a link into the BDD
      * @param Link $l
      * @return bool
      */
@@ -88,7 +88,7 @@ class LinkManager {
     }
 
     /**
-     * Delete a link into link table
+     * Delete a link into the BDD
      * @param $id
      * @return bool
      */

@@ -9,7 +9,7 @@ class UserController extends BaseController {
     /**
      * Redirects into login page
      */
-    public function home() {
+    public function showLogin() {
         self::render("login", "Connexion");
     }
 
@@ -43,4 +43,5 @@ class UserController extends BaseController {
 
         header("Location: /index.php?error=2");
     }
+
 }
