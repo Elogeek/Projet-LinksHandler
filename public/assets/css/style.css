@@ -94,5 +94,35 @@ a {
     color: orchid;
 }
 
+/* Desing page login */
+.windowConnect {
+    background-color: #696969;
+    height: 33vh;
+    width: 56rem;
+}
+#buttonSubmit {
+  margin-top: 10rem;
+    color: dimgrey;
+    padding: 1rem;
+}
 
+#loginDiv {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: darkgray;
+    display: flex;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+}
 
+#loginDiv div {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+#loginDiv a {
+    color: white;
+    margin: -4rem 0 0 12rem;
+}
