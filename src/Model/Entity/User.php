@@ -1,6 +1,7 @@
 <?php
+namespace Elogeek\LinksHandler\src\Entity\User;
 
-class User{
+class User {
     private ?int $id;
     private ?string $name;
     private ?string $firstname;
@@ -8,7 +9,7 @@ class User{
     private ?string $pass;
 
     /**
-     * Links constructor.
+     * Link constructor.
      * @param int|null $id
      * @param string|null $name
      * @param string|null $firstname
@@ -32,9 +33,11 @@ class User{
 
     /**
      * @param int|null $id
+     * @return User
      */
-    public function setId(?int $id): void {
+    public function setId(?int $id): User {
         $this->id = $id;
+        return $this;
     }
 
     /**

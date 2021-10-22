@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Model\Entity;
+namespace Elogeek\LinksHandler\src\Entity\Link;
 
-class Links {
+class Link {
 
     private ?int $id;
     private ?string $href;
@@ -11,15 +11,14 @@ class Links {
     private ?string $name;
 
     /**
-     * Links constructor.
+     * Link constructor.
      * @param int|null $id
      * @param string|null $href
      * @param string|null $title
      * @param string|null $target
      * @param string|null $name
      */
-    public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null)
-    {
+    public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null) {
         $this->id = $id;
         $this->href = $href;
         $this->title = $title;
@@ -28,7 +27,7 @@ class Links {
     }
 
     /**
-     * Get id of Links
+     * Get id of Link
      * @return int|null
      */
     public function getId(): ?int {
@@ -36,7 +35,7 @@ class Links {
     }
 
     /**
-     * Get href of Links
+     * Get href of Link
      * @return string|null
      */
     public function getHref(): ?string {
@@ -44,17 +43,17 @@ class Links {
     }
 
     /**
-     * Set href of Links
+     * Set href of Link
      * @param string|null $href
-     * @return Links
+     * @return Link
      */
-    public function setHref(?string $href): Links {
+    public function setHref(?string $href): Link {
         $this->href = $href;
         return $this;
     }
 
     /**
-     * Get title of Links
+     * Get title of Link
      * @return string|null
      */
     public function getTitle(): ?string {
@@ -62,17 +61,17 @@ class Links {
     }
 
     /**
-     * Set title of Links
+     * Set title of Link
      * @param string|null $title
-     * @return Links
+     * @return Link
      */
-    public function setTitle(?string $title): Links {
+    public function setTitle(?string $title): Link {
         $this->title = $title;
         return $this;
     }
 
     /**
-     * Get target of Links
+     * Get target of Link
      * @return string|null
      */
     public function getTarget(): ?string {
@@ -80,17 +79,17 @@ class Links {
     }
 
     /**
-     * Set target of Links
+     * Set target of Link
      * @param string|null $target
-     * @return Links
+     * @return Link
      */
-    public function setTarget(?string $target): Links {
+    public function setTarget(?string $target): Link {
         $this->target = $target;
         return $this;
     }
 
     /**
-     * Get name of Links
+     * Get name of Link
      * @return string|null
      */
     public function getName(): ?string {
@@ -98,11 +97,11 @@ class Links {
     }
 
     /**
-     * Set name of Links
+     * Set name of Link
      * @param string|null $name
-     * @return Links
+     * @return Link
      */
-    public function setName(?string $name): Links {
+    public function setName(?string $name): Link {
         $this->name = $name;
         return $this;
     }

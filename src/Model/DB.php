@@ -1,5 +1,10 @@
 <?php
 
+namespace Elogeek\LinksHandler\src\Controller;
+
+use PDO;
+use PDOException;
+
 class DB {
 
     private string $host = 'localhost';

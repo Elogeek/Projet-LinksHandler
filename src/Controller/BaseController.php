@@ -1,13 +1,20 @@
 <?php
 
+namespace Elogeek\LinksHandler\Controller;
+
 class BaseController {
 
     /**
+     * Render for redirects page into base view page
      * @param string $view
-     * @param null $data
+     * @param string $title
+     * @param array $data
      */
-    public function render(string $view, $data = null) {
-        require dirname(__FILE__) . "/../../View/$view";
+    public static function render(string $view, string $title, array $data = []) {
+        ob_start();
+        require dirname(__FILE__) . "/../../View/" . $view . ".view.php";
+        $html = ob_get_clean();
+        require dirname(__FILE__) . "/../../View/__partials/base.view.php";
     }
 
 }

@@ -1,15 +1,16 @@
 <?php
-namespace App\src\Controller;
+namespace Elogeek\LinksHandler\src\Controller;
 
-use BaseController;
+use Elogeek\LinksHandler\Controller\BaseController;
+use Elogeek\LinksHandler\src\Manager\LinkManager;
 
 class  HomeController extends BaseController {
 
     /**
-     * Display home of the site
+     * Redirects into home page
      */
     public function showHome() {
-        require_once './View/_partials/base.view.php';
-
+        $links = (new LinkManager())->get();
+        self::render("homePage", "Accueil", [$links]);
     }
 }
