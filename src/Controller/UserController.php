@@ -2,7 +2,7 @@
 
 namespace Elogeek\LinksHandler\Controller;
 
-use Elogeek\LinksHandler\src\Manager\UserManager;
+use Elogeek\LinksHandler\Model\Manager\UserManager;
 
 class UserController extends BaseController {
 

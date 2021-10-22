@@ -1,6 +1,6 @@
 <?php
 
-namespace Elogeek\LinksHandler\src\Entity\Link;
+namespace Elogeek\LinksHandler\Model\Entity;
 
 class Link {
 

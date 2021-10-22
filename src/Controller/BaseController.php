@@ -14,7 +14,7 @@ class BaseController {
         ob_start();
         require dirname(__FILE__) . "/../../View/" . $view . ".view.php";
         $html = ob_get_clean();
-        require dirname(__FILE__) . "/../../View/__partials/base.view.php";
+        require dirname(__FILE__) . "/../../View/_partials/base.view.php";
     }
 
 }

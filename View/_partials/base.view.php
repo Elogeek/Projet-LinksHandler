@@ -11,6 +11,10 @@
 </head>
 <body>
 <div id="container">
+    <header>
+        <div id="newLink"><a href="/public/index.php?controller=link"><i class="fas fa-plus-square"></i> Ajouter un lien</a></div>
+        <div id="account"><a href="/public/index.php?controller=user&action=logout" title="Déconnexion"><i class="fas fa-user-circle"></i></a></div>
+    </header>
     <?=$html?>
 </div>
 </body>

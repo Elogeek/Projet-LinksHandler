@@ -1,6 +1,7 @@
 <?php
 namespace Elogeek\LinksHandler\src\Controller;
 
+use Elogeek\LinksHandler\Controller\HomeController;
 
 require '../vendor/autoload.php';
 

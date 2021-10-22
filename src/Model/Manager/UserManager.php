@@ -1,8 +1,8 @@
 <?php
-namespace Elogeek\LinksHandler\src\Manager;
+namespace Elogeek\LinksHandler\Model\Manager;
 
-use Elogeek\LinksHandler\Controller\DB;
-use Elogeek\LinksHandler\src\Entity\User\User;
+use Elogeek\LinksHandler\Model\DB;
+use Elogeek\LinksHandler\Model\Entity\User;
 
 class UserManager {
 

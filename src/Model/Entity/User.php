@@ -1,5 +1,5 @@
 <?php
-namespace Elogeek\LinksHandler\src\Entity\User;
+namespace Elogeek\LinksHandler\Model\Entity;
 
 class User {
     private ?int $id;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Elogeek\LinksHandler\src\Controller;
+namespace Elogeek\LinksHandler\Model;
 
 use PDO;
 use PDOException;

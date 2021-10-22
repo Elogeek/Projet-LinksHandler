@@ -1,13 +1,14 @@
 
 <div id="menu"> <?php
     if(!isset($_SESSION['id'])) { ?>
-        <div id="buttonProfile"><a href="../public/index.php?controller=user" title="Connexion"><i class="fas fa-user-circle"></i></a></div> <?php
+        <div id="account"><a href="../public/index.php?controller=user" title="Connexion"><i class="fas fa-user-circle"></i></a></div>
+         <?php
     }
     else { ?>
         <header>
             <div id="newLink"><a href="../public/index.php?controller=link"><i class="fas fa-plus-square"></i> Ajouter un lien</a></div>
-            <div id="account"><a href="../public/index.php?controller=user&action=logout" title="Déconnexion"><i class="fas fa-user-circle"></i></a></div>
         </header>
+        if(isset
         <?php
     }?>
 </div>

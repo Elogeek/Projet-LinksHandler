@@ -1,8 +1,8 @@
 <?php
 namespace Elogeek\LinksHandler\Controller;
 
-use Elogeek\LinksHandler\src\Entity\Link\Link;
-use Elogeek\LinksHandler\src\Manager\LinkManager;
+use Elogeek\LinksHandler\Model\Entity\Link;
+use Elogeek\LinksHandler\Model\Manager\LinkManager;
 
 class LinkController extends BaseController {
 
