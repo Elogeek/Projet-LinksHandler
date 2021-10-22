@@ -14,6 +14,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "muffeen/url-status": "^0.2.0"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     }
 }
