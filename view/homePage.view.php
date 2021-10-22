@@ -1,15 +1,19 @@
-
+<!--if the user is connected then I display the disconnection button-->
 <div id="menu"> <?php
-    if(!isset($_SESSION['id'])) { ?>
-        <div id="account"><a href="../public/index.php?controller=user" title="Connexion"><i class="fas fa-user-circle"></i></a></div>
+    if(!$_SESSION['id'] && $_SESSION['id'] === TRUE) { ?>
+        <header>
+            <div id="newLink"><a href="../public/index.php?controller=link"><i class="fas fa-plus-square"></i> Ajouter un lien</a></div>
+            <div class="account" id="btnConnect"><a href="/public/index.php?controller=user&action=logout" title="Connection"><i class="fas fa-user-circle"></i></a></div>
+        </header>
          <?php
     }
     else { ?>
         <header>
             <div id="newLink"><a href="../public/index.php?controller=link"><i class="fas fa-plus-square"></i> Ajouter un lien</a></div>
+            <div class="account" id="btnDisconnect"><a href="../public/index.php?controller=user&action=logout" title="Déconnexion"><i class="fas fa-user-slash"></i></a></div>
         </header>
-        if(isset
         <?php
+
     }?>
 </div>
 <div id="homePage">

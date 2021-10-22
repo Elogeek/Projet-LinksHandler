@@ -12,9 +12,9 @@ class BaseController {
      */
     public static function render(string $view, string $title, array $data = []) {
         ob_start();
-        require dirname(__FILE__) . "/../../View/" . $view . ".view.php";
+        require dirname(__FILE__) . "/../../view/" . $view . ".view.php";
         $html = ob_get_clean();
-        require dirname(__FILE__) . "/../../View/_partials/base.view.php";
+        require dirname(__FILE__) . "/../../view/_partials/base.view.php";
     }
 
 }
