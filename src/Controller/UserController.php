@@ -6,12 +6,14 @@ use Elogeek\LinksHandler\Model\Manager\UserManager;
 
 class UserController extends BaseController {
 
+
     /**
      * Redirects into login page
      */
     public function showLogin() {
-        self::render("login", "Connexion");
+        $this->render("login");
     }
+
 
     /**
      * Login user and create a session
@@ -21,16 +23,16 @@ class UserController extends BaseController {
         $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
         $user = (new UserManager())->searchMail($mail);
-        print_r($user);
         if($user !== null && password_verify($pass, $user->getPass())) {
-            echo 1;
+
             $_SESSION['id'] = $user->getId();
-            header("Location: /index.php?error=0");
+            //header("Location: /index.php?error=0");
         }
         else {
-            header("Location: /index.php?error=1");
+            //header("Location: /index.php?error=1");
         }
     }
+
 
     /**
      * Disconnect an user

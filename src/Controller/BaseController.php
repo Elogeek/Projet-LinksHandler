@@ -7,14 +7,14 @@ class BaseController {
     /**
      * Render for redirects page into base view page
      * @param string $view
-     * @param string $title
      * @param array $data
      */
-    public static function render(string $view, string $title, array $data = []) {
+    public function render(string $view, array $data = []): void
+    {
         ob_start();
-        require dirname(__FILE__) . "/../../view/" . $view . ".view.php";
+        require __DIR__ . "/../../view/" . $view . ".view.php";
         $html = ob_get_clean();
-        require dirname(__FILE__) . "/../../view/_partials/base.view.php";
+        require __DIR__ . "/../../view/_partials/base.view.php";
     }
 
 }

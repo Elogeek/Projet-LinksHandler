@@ -12,7 +12,7 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function add(Link $l): bool{
+    public function addLink(Link $l): bool{
         $href = $l->getHref();
         $title = $l->getTitle();
         $target = $l->getTarget();
@@ -34,7 +34,7 @@ class LinkManager {
      * Get all links
      * @return array
      */
-    public function get(): array {
+    public function getLink(): array {
         $array = [];
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link");
 
@@ -51,7 +51,7 @@ class LinkManager {
      * @param $id
      * @return Link|null
      */
-    public function search($id): ?Link {
+    public function searchLink($id): ?Link {
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE id = :id");
         $request->bindValue("id", $id);
         $link = null;
@@ -67,7 +67,7 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function update(Link $l): bool {
+    public function updateLink(Link $l): bool {
         $id = $l->getId();
         $href = $l->getHref();
         $title = $l->getTitle();
@@ -92,7 +92,7 @@ class LinkManager {
      * @param $id
      * @return bool
      */
-    public function delete($id): bool {
+    public function deleteLink($id): bool {
         $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
         $request->bindValue("id", $id);
 

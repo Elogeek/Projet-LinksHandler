@@ -10,7 +10,7 @@ class UserManager {
      * @param User $u
      * @return bool
      */
-    public function add(User $u): bool {
+    public function addUser(User $u): bool {
 
         $name = $u->getName();
         $firstName = $u->getFirstname();
@@ -28,6 +28,7 @@ class UserManager {
         }
         return false;
     }
+
 
     /** return an user via id
      * @param $mail
