@@ -52,6 +52,17 @@ class DB {
     }
 
     /**
+     * Encode a given plain password
+     * @param $plainPassword
+     * @return string
+     */
+    public static function encodePassword($plainPassword): string {
+        // Encoding password.
+        $password = self::secureData($plainPassword);
+        return password_hash($password, PASSWORD_BCRYPT);
+    }
+
+    /**
      * avoid clone by another dev
      */
     public function __clone() {}

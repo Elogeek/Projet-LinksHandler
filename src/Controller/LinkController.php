@@ -11,7 +11,6 @@ class LinkController extends BaseController {
      * Redirects into addLink page
      */
     public function home() {
-
         self::render("addLink", "Ajout du lien");
     }
 

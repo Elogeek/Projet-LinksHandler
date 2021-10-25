@@ -7,21 +7,40 @@ require '../vendor/autoload.php';
 
 session_start();
 
-if(!isset($_SESSION['id']) || $_SESSION['id'] !== true) {
+if( (!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
     (new UserController())->showLogin();
 }
 else {
 
-    /*if(isset($_GET['controller'])) {
-        $controller = "Elogeek\\LinksHandler\src\Controller\\" . ucfirst(filter_var($_GET['controller'], FILTER_SANITIZE_STRING)) . "Controller";
+    if(isset($_GET['controller'])) {
+        $controller = "Elogeek\\LinksHandler\\Controller\\" . ucfirst(filter_var($_GET['controller'], FILTER_SANITIZE_STRING)) . "Controller";
 
         if(class_exists($controller)) {
+            echo $controller;
             $controller = new $controller();
 
             if(isset($_GET['action'])) {
                 $action = filter_var($_GET['action'], FILTER_SANITIZE_STRING);
 
-              switch
-    }*/
+                try {
+                    if((new ReflectionClass($controller))->hasMethod($action)) {
+                        $controller->$action();
+                    }
+                }
+                catch (ReflectionException $reflectionException) {
+                    echo $reflectionException->getMessage();
+                }
+            }
+            else {
+                $controller->home();
+            }
+        }
+        else {
+            (new HomeController())->showHome();
 
+        }
+    }
+    else {
+        (new HomeController())->showHome();
+    }
 }

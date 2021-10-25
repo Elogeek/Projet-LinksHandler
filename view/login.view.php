@@ -1,6 +1,6 @@
 <div class="windowConnect">
     <div id="loginDiv">
-        <form action="../public/index.php?controller=user&action=login" method="POST">
+        <form action="/index.php?controller=user&action=login" method="POST">
             <div>
                 <label for="mail">Adresse mail: </label>
                 <input type="email" name="mail" id="mail" required>
@@ -10,10 +10,10 @@
                 <input type="password" name="password" id="password" required>
             </div>
 
-            <input type="submit" id="buttonSubmit" value="Se connecter">
-            <div class="backButton"><a href="../public/index.php">Retour</a></div>
-
+            <input type="submit" id="buttonSubmit" value="Se connecter" name="login-submit">
+            <div class="backButton">
+                <a href="/index.php">Retour</a>
+            </div>
         </form>
-
     </div>
 </div>

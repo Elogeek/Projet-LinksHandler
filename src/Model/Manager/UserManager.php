@@ -6,31 +6,29 @@ use Elogeek\LinksHandler\Model\Entity\User;
 
 class UserManager {
 
-    /** Add user in the BDD
+    /**
+     * Add user in the BDD
      * @param User $u
      * @return bool
      */
-    public function addUser(User $u): bool {
+    public function addUser(User &$u): bool {
 
-        $name = $u->getName();
-        $firstName = $u->getFirstname();
-        $mail = $u->getMail();
-        $pass = $u->getPass();
+        $request = DB::getInstance()->prepare("INSERT INTO prefix_user(nom,prenom,mail,pass)VALUES(:name,:firstname,:mail,:pass)");
 
-        $request = DB::getInstance()->prepare("INSERT INTO prefix_user(non,prenom,mail,pass)VALUES(:name,:firstName,:mail,:pass)");
-        $request->bindValue("name",$name);
-        $request->bindValue('firstname',$firstName);
-        $request->bindValue("mail",$mail);
-        $request->bindValue("pass",$pass);
+        $request->bindValue(":name",$u->getName());
+        $request->bindValue(":firstname", $u->getFirstname());
+        $request->bindValue(":mail",$u->getMail());
+        $request->bindValue(":pass",DB::encodePassword($u->getPass()));
 
-        if($request->execute()){
-            return true;
-        }
-        return false;
+        $result = $request->execute();
+        $u->setId(DB::getInstance()->lastInsertId());
+        return $result;
+
     }
 
 
-    /** return an user via id
+    /**
+     * Return an user via id
      * @param $mail
      * @return User|null
      */

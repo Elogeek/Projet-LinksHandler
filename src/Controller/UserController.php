@@ -18,18 +18,20 @@ class UserController extends BaseController {
     /**
      * Login user and create a session
      */
-    public function login() {
+    public function login(): void
+    {
         $mail = filter_var($_POST['mail'], FILTER_SANITIZE_EMAIL);
         $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
         $user = (new UserManager())->searchMail($mail);
         if($user !== null && password_verify($pass, $user->getPass())) {
 
-            $_SESSION['id'] = $user->getId();
-            //header("Location: /index.php?error=0");
+            $_SESSION['id'] = true;
+            $_SESSION['user'] = $user;
+            header("Location: /index.php");
         }
         else {
-            //header("Location: /index.php?error=1");
+            header("Location: /index.php");
         }
     }
 

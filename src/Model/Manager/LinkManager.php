@@ -34,7 +34,7 @@ class LinkManager {
      * Get all links
      * @return array
      */
-    public function getLink(): array {
+    public function getLinks(): array {
         $array = [];
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link");
 
@@ -92,7 +92,7 @@ class LinkManager {
      * @param $id
      * @return bool
      */
-    public function deleteLink($id): bool {
+    public function deleteLinks($id): bool {
         $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
         $request->bindValue("id", $id);
 
