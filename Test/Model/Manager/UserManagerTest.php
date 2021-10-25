@@ -19,3 +19,10 @@ else {
     echo "Ouuups,erreur en ajoutant l'utilisateur !\n";
     die;
 }
+if($userManager->searchMail($user)) {
+    echo "l'utilisateur est bien en BDD !\n";
+}
+else {
+    echo "Ouuups,erreur l'utilisateur n'existe pas !\n";
+    die;
+}

@@ -11,7 +11,7 @@
             </div>
 
             <input type="submit" id="buttonSubmit" value="Se connecter" name="login-submit">
-            <div class="backButton">
+            <div class ="homeBtn">
                 <a href="/index.php">Retour</a>
             </div>
         </form>

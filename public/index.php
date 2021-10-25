@@ -1,6 +1,7 @@
 <?php
 
 use Elogeek\LinksHandler\Controller\HomeController;
+use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
 
 require '../vendor/autoload.php';
@@ -10,6 +11,10 @@ session_start();
 if( (!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
     (new UserController())->showLogin();
 }
+elseif (!isset($_SESSION['id'])){
+    (new LinkController())->showLinksHome();
+}
+
 else {
 
     if(isset($_GET['controller'])) {
@@ -32,7 +37,7 @@ else {
                 }
             }
             else {
-                $controller->home();
+                //$controller;
             }
         }
         else {

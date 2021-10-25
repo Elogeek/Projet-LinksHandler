@@ -10,8 +10,15 @@ class LinkController extends BaseController {
     /**
      * Redirects into addLink page
      */
-    public function home() {
-        self::render("addLink", "Ajout du lien");
+    public function homeLinks(): void {
+       $this->render("addLink");
+    }
+
+    /**
+     * Display a homePage links
+     */
+    public function showLinksHome(): void {
+        $this->render("links");
     }
 
     /**
@@ -27,11 +34,11 @@ class LinkController extends BaseController {
 
         if($url_status->getStatusCode() === 200) {
             $link = new Link(null, $href, $title,"_blank", $name);
-            (new LinkManager())->add($link);
-            header("Location: /index.php?error=3");
+            (new LinkManager())->addLinks($link);
+            header("Location: /index.php");
         }
         else {
-            header("Location: /index.php?error=6");
+            header("Location: /index.php");
         }
 
     }
@@ -40,9 +47,9 @@ class LinkController extends BaseController {
      * Redirects into updateLink page
      */
     public function update() {
-        $link = (new LinkManager())->search(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+        $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
 
-        self::render("updateLink", "Modifier de lien", [$link]);
+      $this->render("updateLink", [$link]);
     }
 
     /**
@@ -56,30 +63,30 @@ class LinkController extends BaseController {
         $url_status = UrlStatus::get($href);
 
         if($url_status->getStatusCode() === 200) {
-            $link = (new LinkManager())->search(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+            $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
             $link
                 ->setHref($href)
                 ->setTitle($title)
                 ->setName($name);
 
-            (new LinkManager())->update($link);
+            (new LinkManager())->updateLink($link);
 
-            header("Location: /index.php?error=4");
+            header("Location: /index.php");
         }
         else {
-            header("Location: /index.php?error=6");
+            header("Location: /index.php");
         }
 
     }
 
     /**
-     *  Delete a link inthe BDD
+     *  Delete a link in the BDD
      */
     public function delete() {
 
-        (new LinkManager())->delete(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+        (new LinkManager())->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
 
-        header("Location: /index.php?error=5");
+        header("Location: /index.php");
     }
 
 }

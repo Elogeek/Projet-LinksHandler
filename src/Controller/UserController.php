@@ -35,7 +35,6 @@ class UserController extends BaseController {
         }
     }
 
-
     /**
      * Disconnect an user
      */
@@ -45,7 +44,7 @@ class UserController extends BaseController {
         session_unset();
         session_destroy();
 
-        header("Location: /index.php?error=2");
+        header("Location: /index.php");
     }
 
 }

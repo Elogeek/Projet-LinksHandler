@@ -12,22 +12,19 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function addLink(Link $l): bool{
-        $href = $l->getHref();
-        $title = $l->getTitle();
-        $target = $l->getTarget();
-        $name = $l->getName();
+    public function addLinks(Link &$l): bool {
 
         $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name)  VALUES(:href, :title, :target, :name)");
-        $request->bindValue("href", $href);
-        $request->bindValue("title", $title);
-        $request->bindValue("target", $target);
-        $request->bindValue("name", $name);
 
-        if( $request->execute()) {
-            return true;
-        }
-        return false;
+        $request->bindValue(":name",$l->getHref());
+        $request->bindValue(":firstname", $l->getTitle());
+        $request->bindValue(":mail",$l->getTarget());
+        $request->bindValue(":name", $l->getName());
+
+        $result = $request->execute();
+        $l->setId(DB::getInstance()->lastInsertId());
+        return $result;
+
     }
 
     /**
@@ -51,7 +48,7 @@ class LinkManager {
      * @param $id
      * @return Link|null
      */
-    public function searchLink($id): ?Link {
+    public function searchLinks($id): ?Link {
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE id = :id");
         $request->bindValue("id", $id);
         $link = null;
@@ -68,38 +65,28 @@ class LinkManager {
      * @return bool
      */
     public function updateLink(Link $l): bool {
-        $id = $l->getId();
-        $href = $l->getHref();
-        $title = $l->getTitle();
-        $target = $l->getTarget();
-        $name = $l->getName();
 
         $request = DB::getInstance()->prepare("UPDATE  prefix_link SET href = :href, title = :title, target = :target, name = :name WHERE id = :id");
-        $request->bindValue("id", $id);
-        $request->bindValue("href", $href);
-        $request->bindValue("title", $title);
-        $request->bindValue("target", $target);
-        $request->bindValue("name", $name);
+        $request->bindValue("id", $l->getHref());
+        $request->bindValue("href", $l->getTitle());
+        $request->bindValue("title", $l->getTarget());
+        $request->bindValue("target", $l->getName());
+        $request->bindValue("name", $l->getId());
 
-        if($request->execute()) {
-            return true;
-        }
-        return false;
+        return $request->execute();
+
     }
 
     /**
      * Delete a link into the BDD
-     * @param $id
+     * @param Link $l
      * @return bool
      */
-    public function deleteLinks($id): bool {
-        $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
-        $request->bindValue("id", $id);
+    public function deleteLinks(Link $l): bool {
 
-        if($request->execute()) {
-            return true;
-        }
-        return false;
+        $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
+        $request->bindValue("id", $l->getId());
+        return $request->execute();
     }
 
 }

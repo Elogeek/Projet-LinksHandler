@@ -35,6 +35,15 @@ class Link {
     }
 
     /**
+     * @param int|null $id
+     * @return Link
+     */
+    public function setId(?int $id): Link {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * Get href of Link
      * @return string|null
      */
@@ -105,5 +114,7 @@ class Link {
         $this->name = $name;
         return $this;
     }
+
+
 
 }

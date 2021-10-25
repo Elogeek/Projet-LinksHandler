@@ -26,7 +26,6 @@ class UserManager {
 
     }
 
-
     /**
      * Return an user via id
      * @param $mail

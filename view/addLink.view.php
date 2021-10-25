@@ -15,5 +15,5 @@
         </div>
         <input type="submit" id="buttonSubmit" value="Ajouter le lien">
     </form>
-    <div class="backButton"><a href="../public/index.php">Retour</a></div>
+    <div class="homeBtn"><a href="/index.php">Retour</a></div>
 </div>
