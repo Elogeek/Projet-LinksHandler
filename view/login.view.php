@@ -1,16 +1,16 @@
-<div class="windowConnect">
+<div class="userConnect">
     <div id="loginDiv">
         <form action="/index.php?controller=user&action=login" method="POST">
             <div>
-                <label for="mail">Adresse mail: </label>
+                <label for="mail">Adresse mail :</label>
                 <input type="email" name="mail" id="mail" required>
             </div>
             <div>
-                <label for="password">Mot de passe: </label>
+                <label for="password">Mot de passe :</label>
                 <input type="password" name="password" id="password" required>
             </div>
 
-            <input type="submit" id="buttonSubmit" value="Se connecter" name="login-submit">
+            <input type="submit" class="buttonSubmit" value="Se connecter" name="login-submit">
             <div class ="homeBtn">
                 <a href="/index.php">Retour</a>
             </div>

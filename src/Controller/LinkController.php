@@ -24,7 +24,7 @@ class LinkController extends BaseController {
     /**
      * Add a link in the BDD
      */
-    public function add() {
+    public function add(): void {
 
         $href = filter_var($_POST['hrefLink'],FILTER_SANITIZE_STRING);
         $title = filter_var($_POST['title'],FILTER_SANITIZE_STRING);
@@ -35,9 +35,11 @@ class LinkController extends BaseController {
         if($url_status->getStatusCode() === 200) {
             $link = new Link(null, $href, $title,"_blank", $name);
             (new LinkManager())->addLinks($link);
-            header("Location: /index.php");
+            // if add link => display homePageLink
+            $this->showLinksHome();
         }
         else {
+            // if not add link => redirect to index
             header("Location: /index.php");
         }
 
@@ -46,16 +48,15 @@ class LinkController extends BaseController {
     /**
      * Redirects into updateLink page
      */
-    public function update() {
-        $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
-
-      $this->render("updateLink", [$link]);
+    public function update(): void {
+    $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+    $this->render("updateLink", [$link]);
     }
 
     /**
      * Update a link into the BDD
      */
-    public function updateConfirm() {
+    public function updateConfirm(): void {
 
         $href = filter_var($_POST['hrefLink'], FILTER_SANITIZE_STRING);
         $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
@@ -82,7 +83,7 @@ class LinkController extends BaseController {
     /**
      *  Delete a link in the BDD
      */
-    public function delete() {
+    public function delete(): void {
 
         (new LinkManager())->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
 

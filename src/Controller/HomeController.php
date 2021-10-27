@@ -9,9 +9,9 @@ class  HomeController extends BaseController {
     /**
      * Display the homePage
      */
-    public function showHome(): void
-    {
+    public function showHome(): void {
         $links = (new LinkManager())->getLinks();
         $this->render("homePage", [$links]);
     }
+
 }

@@ -27,6 +27,18 @@ class UserManager {
     }
 
     /**
+     * Return a id user
+     * @param User $id
+     * @return bool
+     */
+    public function getById(User $id): bool {
+        $request = DB::getInstance()->prepare("SELECT * FROM prefix_user WHERE id = :id");
+        $request->bindValue(':id', $id->getId());
+        $request->execute();
+        return $request;
+    }
+
+    /**
      * Return an user via id
      * @param $mail
      * @return User|null

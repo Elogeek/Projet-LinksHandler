@@ -6,14 +6,12 @@ use Elogeek\LinksHandler\Model\Manager\UserManager;
 
 class UserController extends BaseController {
 
-
     /**
      * Redirects into login page
      */
     public function showLogin() {
         $this->render("login");
     }
-
 
     /**
      * Login user and create a session
