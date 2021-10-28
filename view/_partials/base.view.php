@@ -15,10 +15,16 @@
     <div id="menu"> <?php
         if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
             <header>
-                <div id="newLink">
+                <div class="newLink">
                     <a href="/index.php?controller=link">
                         <i class="fas fa-plus-square"></i>
                         Ajouter un lien
+                    </a>
+                </div>
+                <div class="newLink">
+                    <a href="/index.php?controller=link&action=updtLinks">
+                        <i class="fas fa-edit"></i>
+                        Modifier un lien
                     </a>
                 </div>
                 <div class="account" id="btnDisconnect">
@@ -34,6 +40,12 @@
                     <a href="/index.php?controller=link">
                         <i class="fas fa-plus-square"></i>
                         Ajouter un lien
+                    </a>
+                </div>
+                <div class="updtLink">
+                    <a href="/index.php?controller=link">
+                        <i class="fas fa-edit"></i>
+                        Modifier un lien
                     </a>
                 </div>
                 <div class="account" id="btnConnect">

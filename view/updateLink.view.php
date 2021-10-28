@@ -1,23 +1,27 @@
 
-<div id="updateLinkDiv">
-    <form action="../public/index.php?controller=link&action=updateConfirm&id=<?= $data[0]->getId() ?>" method="POST">
+<div id="updateLinks">
+
+    <i class="fas fa-edit"></i>
+    <form action="/index.php?controller=link&action=updateConfirm&id<?= $data[0]->getId() ?>" method="POST">
         <div>
-            <label for="hrefLink">Lien:</label>
+            <label for="hrefLink">Lien :</label>
             <input type="text" name="hrefLink" id="hrefLink" required value="<?= $data[0]->getHref() ?>">
         </div>
 
         <div>
-            <label for="title">Titre:</label>
+            <label for="title">Titre :</label>
             <input type="text" name="title" id="title" required value="<?= $data[0]->getTitle() ?>">
         </div>
 
         <div>
-            <label for="name">Nom:</label>
+            <label for="name">Nom :</label>
             <input type="text" name="name" id="name" required value="<?= $data[0]->getName() ?>">
         </div>
 
-        <input type="submit" id="buttonSubmit" value="Ajouter">
+        <input type="submit" id="buttonSubmit" value="Modifier le lien">
     </form>
-    <div class="backButton"><a href="../public/index.php?controller=link&action=delete&id=<?= $data[0]->getId() ?>">Supprimer le lien</a></div>
-    <div class="backButton"><a href="../public/index.php">Retour</a></div>
+    <div class="deleteBtn"><a href="../public/index.php?controller=link&action=delete&id=<?= $data[0]->getId() ?>">Supprimer le lien</a></div>
+    <div class="homeBtn">
+        <a href="/index.php">Retour</a>
+    </div>
 </div>

@@ -8,7 +8,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors',1);
 
 $linkManager = new LinkManager();
-$link = new Link(null,"https://www.youtube.com/watch?v=aUUSz54G6jc&list=RDEM9VJO2EAK2Dznx4RxBs0yLQ&start_radio=1","musique","_blank","musique");
+$link = new Link(null,"https://www.youtube.com/watch?v=dkx64SkmP6Q&list=RDdkx64SkmP6Q&start_radio=1","musiqueDeOuf","_blank","oufty");
 
 if($linkManager->addLinks($link)) {
     echo "lien est bien ajoutée en BDD !\n";
@@ -16,5 +16,32 @@ if($linkManager->addLinks($link)) {
 
 else {
     echo "Ouuups,erreur en ajoutant le lien !\n";
+    die;
+}
+
+// Search a link via id
+if($linkManager->searchLinks(4)) {
+    echo "je suis là\n";
+}
+else {
+    echo "cherche moi encore\n";
+    die;
+}
+
+// Modif a link
+if($linkManager->updateLink($link)) {
+    echo " modif is perfect\n";
+}
+else {
+    echo "ouuuuups\n";
+    die;
+}
+
+// Delete a link
+if($linkManager->deleteLinks($linkManager->searchLinks(4))) {
+   echo " le dev est un génie\n";
+}
+else {
+    echo "oh ma vache\n";
     die;
 }

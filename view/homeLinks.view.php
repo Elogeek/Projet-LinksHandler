@@ -1,60 +1,21 @@
 
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
+<?php
 
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
+use Elogeek\LinksHandler\Model\Manager\LinkManager;
 
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
+$linkManager = new LinkManager();
+$allLinks = $linkManager->getLinks();
 
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
-</div>
-
-<div class="linkImage">
-    <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
-    <div class="linkName">Link name</div>
+?>
+<div class="homePage"><?php
+foreach ($allLinks as $link)
+{
+    ?>
+    <div class="linkImage">
+        <div class="image"><img src="/assets/image/imgLinks.webp" alt="img par défault"></div>
+        <div class="linkName"><a href="<?=$link->getHref()?>" target="<?=$link->getTarget()?>"><?=$link->getTitle()?></a></div>
+    </div>
+    <?php
+}
+?>
 </div>

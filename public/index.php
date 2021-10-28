@@ -33,32 +33,35 @@ else {
                     echo $reflectionException->getMessage();
                 }
             } else {
+                (new LinkController())->addLinks();
                 (new LinkController())->homeLinks();
+                (new LinkController())->updtLinks();
+
             }
         } else {
-            (new HomeController())->showHome();
+            (new homeController())->showHome();
         }
+    } else {
+        (new homeController())->showHome();
     }
-    else {
-            (new HomeController())->showHome();
-        }
 
 }
 
 /*
       //switch LinkController
-      switch ($_GET[$controller]) {
+      $ctrl = new LinkController()
+      switch ($_GET[$ctrl]) {
           case 'add':
-              $controller->add();
+             $ctrl->add();
               break;
           case 'update' :
-              $controller->update();
+             $ctrl->update();
               break;
           case 'updateConfirm' :
-              $controller->updateConfirm();
+             $ctrl->updateConfirm();
               break;
           case 'delete' :
-              $controller->delete();
+              $ctrl->delete();
               break;
           default :
               (new HomeController())->showHome();

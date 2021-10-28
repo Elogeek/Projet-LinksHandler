@@ -22,6 +22,7 @@ header {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    width: 183rem;
 }
 
 header i {
@@ -41,19 +42,19 @@ header a:hover {
     color: crimson;
 }
 
-#newLink a {
+.newLink a {
    font-size: 1.8rem;
 }
 
 /* Design links.view*/
-.container {
+
+.container, .homePage {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 14rem;
-    width: 80%;
-    padding: 1rem;
+    margin-top: 10rem;
+    padding: 0.8rem;
     text-align: center;
 }
 
@@ -94,7 +95,7 @@ a {
     color: orchid;
 }
 
-/* Desing page login and addLinkpage */
+/* Desing page login, addLinkpage and updateLink */
 form {
     display: flex;
     flex-direction: column;
