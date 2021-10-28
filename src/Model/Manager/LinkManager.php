@@ -14,11 +14,11 @@ class LinkManager {
      */
     public function addLinks(Link &$l): bool {
 
-        $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name)  VALUES(:href, :title, :target, :name)");
+        $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name)VALUES(:href, :title, :target, :name)");
 
-        $request->bindValue(":name",$l->getHref());
-        $request->bindValue(":firstname", $l->getTitle());
-        $request->bindValue(":mail",$l->getTarget());
+        $request->bindValue(":href",$l->getHref());
+        $request->bindValue(":title", $l->getTitle());
+        $request->bindValue(":target",$l->getTarget());
         $request->bindValue(":name", $l->getName());
 
         $result = $request->execute();

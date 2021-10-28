@@ -7,7 +7,6 @@ use Elogeek\LinksHandler\Model\Manager\UserManager;
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors',1);
 
-
 $userManager = new UserManager();
 $user = new User(null, 'Elogeek', 'Elo','elo@gmail.com','123Azerty');
 

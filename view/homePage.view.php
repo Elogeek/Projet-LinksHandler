@@ -7,7 +7,7 @@
             $a = '<a href="index.php?controller=link&action=update&id=' . $link->getId() . '"><i class="far fa-edit"></i></a>';
         } ?>
         <div class="linkImage">
-            <div class="image"><?= $a ?></div>
+            <div class="image"><img src="/public/assets/image/imgLinks.webp" alt="Image"></div>
             <div class="linkName"><a href="<?= $link->getHref()?>" target="<?= $link->getTarget()?>"><?= $link->getName()?></a></div>
         </div> <?php
     } ?>
