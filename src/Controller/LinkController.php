@@ -18,7 +18,7 @@ class LinkController extends BaseController {
      * Display a homePage links
      */
     public function showLinksHome(): void {
-        $this->render("links");
+        $this->render("homeLinks");
     }
 
     /**
