@@ -1,6 +1,6 @@
-
+<h1>Accueil</h1>
 <div class="homePage">
-    <h1>Accueil</h1><?php
+    <?php
     foreach($data[0] as $link) {
         $a = '';
         if(isset($_SESSION['id'])) {

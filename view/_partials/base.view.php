@@ -42,12 +42,6 @@
                         Ajouter un lien
                     </a>
                 </div>
-                <div class="updtLink">
-                    <a href="/index.php?controller=link">
-                        <i class="fas fa-edit"></i>
-                        Modifier un lien
-                    </a>
-                </div>
                 <div class="account" id="btnConnect">
                     <a href="/index.php?controller=user&action=login" title="Connexion">
                         <i class="fas fa-user-slash"></i>
