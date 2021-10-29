@@ -56,7 +56,7 @@ class LinkController extends BaseController {
     /**
      * Update a link into the BDD
      */
-    public function updateConfirm(Link $link): void {
+    public function update(Link $link): void {
 
         $href = filter_var($_POST['hrefLink'], FILTER_SANITIZE_STRING);
         $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);

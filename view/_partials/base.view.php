@@ -12,7 +12,7 @@
 <body>
 <div id="container">
     <!--if the user is connected then I display the disconnection button-->
-    <div id="menu"> <?php
+     <?php
         if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
             <header>
                 <div class="newLink">
@@ -22,14 +22,21 @@
                     </a>
                 </div>
                 <div class="newLink">
-                    <a href="/index.php?controller=link&action=updtLinks">
+                    <a href="/index.php?controller=link&action=update">
                         <i class="fas fa-edit"></i>
                         Modifier un lien
                     </a>
                 </div>
+                <div class="newLink">
+                    <a href="/index.php?controller=link&action=delete">
+                        <i class="fas fa-trash-alt"></i>
+                        Supprimer un lien
+                    </a>
+                </div>
                 <div class="account" id="btnDisconnect">
                     <a href="/index.php?controller=user&action=logout" title="Déconnection">
-                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-user-slash"></i>
+                        Déconnexion
                     </a>
                 </div>
             </header> <?php
@@ -44,14 +51,16 @@
                 </div>
                 <div class="account" id="btnConnect">
                     <a href="/index.php?controller=user&action=login" title="Connexion">
-                        <i class="fas fa-user-slash"></i>
+                        <i class="fas fa-user-circle"></i>
+                        Connexion
                     </a>
                 </div>
             </header>
             <?php
 
-        }?>
-    </div>
+        }
+    ?>
+
 
     <!-- The html content from the ob_get_clean() -->
     <?= $html ?>

@@ -2,7 +2,7 @@
 <div id="updateLinks">
 
     <i class="fas fa-edit"></i>
-    <form action="/index.php?controller=link&action=updateConfirm&id<?= $data[0]->getId() ?>" method="POST">
+    <form action="/index.php?controller=link&action=update&id<?= $data[0]->getId() ?>" method="POST">
         <div>
             <label for="hrefLink">Lien :</label>
             <input type="text" name="hrefLink" id="hrefLink" required value="<?= $data[0]->getHref() ?>">
@@ -20,7 +20,7 @@
 
         <input type="submit" id="buttonSubmit" value="Modifier le lien">
     </form>
-    <div class="deleteBtn"><a href="../public/index.php?controller=link&action=delete&id=<?= $data[0]->getId() ?>">Supprimer le lien</a></div>
+    <div class="deleteBtn"><a href="/index.php?controller=link&action=delete&id=<?= $data[0]->getId() ?>">Supprimer le lien</a></div>
     <div class="homeBtn">
         <a href="/index.php">Retour</a>
     </div>

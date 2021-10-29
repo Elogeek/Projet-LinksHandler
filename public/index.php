@@ -57,9 +57,6 @@ else {
           case 'update' :
              $ctrl->update();
               break;
-          case 'updateConfirm' :
-             $ctrl->updateConfirm();
-              break;
           case 'delete' :
               $ctrl->delete();
               break;
