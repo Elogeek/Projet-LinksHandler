@@ -14,12 +14,13 @@ class LinkManager {
      */
     public function addLinks(Link &$l): bool {
 
-        $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name)VALUES(:href, :title, :target, :name)");
+        $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name, user_fk)VALUES(:href, :title, :target, :name, :userFk)");
 
         $request->bindValue(":href",$l->getHref());
         $request->bindValue(":title", $l->getTitle());
         $request->bindValue(":target",$l->getTarget());
         $request->bindValue(":name", $l->getName());
+        $request->bindValue(':userFk', $l->getUserFk());
 
         $result = $request->execute();
         $l->setId(DB::getInstance()->lastInsertId());
@@ -37,7 +38,7 @@ class LinkManager {
 
         if($request->execute() && $result = $request->fetchAll()) {
             foreach($result as $link) {
-                $array[] = new Link($link['id'], $link['href'], $link['title'], $link['target'], $link['name']);
+                $array[] = new Link($link['id'], $link['href'], $link['title'], $link['target'], $link['name'],$link['user_fk']);
             }
         }
         return $array;
@@ -54,7 +55,7 @@ class LinkManager {
         $link = null;
 
         if($request->execute() && $result = $request->fetch()) {
-            $link = new Link($result['id'], $result['href'], $result['title'], $result['target'], $result['name']);
+            $link = new Link($result['id'], $result['href'], $result['title'], $result['target'], $result['name'],$result['user_fk']);
         }
         return $link;
     }
@@ -66,12 +67,13 @@ class LinkManager {
      */
     public function updateLink(Link $l): bool {
 
-        $request = DB::getInstance()->prepare("UPDATE  prefix_link SET href = :href, title = :title, target = :target, name = :name WHERE id = :id");
+        $request = DB::getInstance()->prepare("UPDATE  prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk WHERE id = :id");
         $request->bindValue("id", $l->getHref());
         $request->bindValue("href", $l->getTitle());
         $request->bindValue("title", $l->getTarget());
         $request->bindValue("target", $l->getName());
         $request->bindValue("name", $l->getId());
+        $request->bindValue("user_fk",$l->getUserFk());
 
         return $request->execute();
 

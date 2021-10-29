@@ -25,6 +25,24 @@ else {
             if (isset($_GET['action'])) {
                 $action = filter_var($_GET['action'], FILTER_SANITIZE_STRING);
 
+                /*    //switch LinkController
+
+                      $ctrl = new LinkController();
+
+                      switch ($_GET[$ctrl]) {
+                          case 'add':
+                             $ctrl->add();
+                              break;
+                          case 'update' :
+                             $ctrl->update();
+                              break;
+                          case 'delete' :
+                              $ctrl->delete();
+                              break;
+                          default :
+                              (new HomeController())->showHome();
+                       }
+                */
                 try {
                     if ((new ReflectionClass($controller))->hasMethod($action)) {
                         $controller->$action();
@@ -35,8 +53,6 @@ else {
             } else {
                 (new LinkController())->addLinks();
                 (new LinkController())->homeLinks();
-                (new LinkController())->updtLinks();
-
             }
         } else {
             (new homeController())->showHome();
@@ -46,21 +62,3 @@ else {
     }
 
 }
-
-/*
-      //switch LinkController
-      $ctrl = new LinkController()
-      switch ($_GET[$ctrl]) {
-          case 'add':
-             $ctrl->add();
-              break;
-          case 'update' :
-             $ctrl->update();
-              break;
-          case 'delete' :
-              $ctrl->delete();
-              break;
-          default :
-              (new HomeController())->showHome();
-}
-*/

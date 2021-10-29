@@ -8,7 +8,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors',1);
 
 $linkManager = new LinkManager();
-$link = new Link(null,"https://www.youtube.com/watch?v=dkx64SkmP6Q&list=RDdkx64SkmP6Q&start_radio=1","musiqueDeOuf","_blank","oufty");
+$link = new Link(null,"https://www.youtube.com/watch?v=XFkzRNyygfk&list=RDEMk8jEIzOyB2trfXZrSEVz_Q&start_radio=1","RadioHead","_blank","RadioHead");
 
 if($linkManager->addLinks($link)) {
     echo "lien est bien ajoutée en BDD !\n";
