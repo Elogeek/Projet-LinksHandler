@@ -33,9 +33,10 @@ class LinkManager {
      * Get all links
      * @return array
      */
-    public function getLinks(): array {
+    public function getLinks(User $user): array {
         $array = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM prefix_link LIMIT 12");
+        $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE user_fk = :user_id");
+        $request->bindValue(':user_id', $user->getId());
 
         if($request->execute() && $result = $request->fetchAll()) {
             foreach($result as $link) {

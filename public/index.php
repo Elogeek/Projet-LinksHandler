@@ -3,6 +3,7 @@
 use Elogeek\LinksHandler\Controller\HomeController;
 use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
+use Elogeek\LinksHandler\Model\Entity\User;
 
 require '../vendor/autoload.php';
 
@@ -13,6 +14,8 @@ if( (!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['logi
 }
 
 else {
+
+    $user = $_SESSION['user'];
 
     if (isset($_GET['controller'])) {
         // pas de src ici car Elogeek//LinkHandler => remplace src
@@ -26,40 +29,28 @@ else {
             if (isset($_GET['action'])) {
                 $action = filter_var($_GET['action'], FILTER_SANITIZE_STRING);
 
-                /*    //switch LinkController
+                //switch Controller
 
-                      $ctrl = new LinkController();
-
-                      switch ($_GET[$ctrl]) {
-                          case 'add':
-                             $ctrl->add();
-                              break;
-                          case 'update' :
-                             $ctrl->update();
-                              break;
-                          case 'delete' :
-                              $ctrl->delete();
-                              break;
-                          default :
-                              (new HomeController())->showHome();
-                       }
-                */
-                try {
-                    if ((new ReflectionClass($controller))->hasMethod($action)) {
-                        $controller->$action();
-                    }
-                } catch (ReflectionException $reflectionException) {
-                    echo $reflectionException->getMessage();
+                switch ($_GET['action']) {
+                    case 'add':
+                        $controller->add();
+                        break;
+                    case 'update' :
+                        $controller->update();
+                        break;
+                    case 'delete' :
+                        $controller->delete();
+                        break;
+                    case 'logout' :
+                        $controller->logout();
+                    default :
+                        $controller->showHome();
                 }
-            } else {
-                (new LinkController())->addLinks();
-                (new LinkController())->homeLinks();
             }
-        } else {
-            (new homeController())->showHome();
+
+        $controller->showHome();
         }
-    } else {
-        (new homeController())->showHome();
+
     }
 
 }
