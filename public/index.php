@@ -43,6 +43,7 @@ else {
                         break;
                     case 'logout' :
                         $controller->logout();
+                        break;
                     default :
                         $controller->showHome();
                 }
