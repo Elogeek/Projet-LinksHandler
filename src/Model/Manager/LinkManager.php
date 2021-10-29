@@ -4,6 +4,7 @@ namespace Elogeek\LinksHandler\Model\Manager;
 
 use Elogeek\LinksHandler\Model\DB;
 use Elogeek\LinksHandler\Model\Entity\Link;
+use Elogeek\LinksHandler\Model\Entity\User;
 
 class LinkManager {
 
@@ -34,7 +35,7 @@ class LinkManager {
      */
     public function getLinks(): array {
         $array = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM prefix_link");
+        $request = DB::getInstance()->prepare("SELECT * FROM prefix_link LIMIT 12");
 
         if($request->execute() && $result = $request->fetchAll()) {
             foreach($result as $link) {
@@ -43,6 +44,7 @@ class LinkManager {
         }
         return $array;
     }
+
 
     /**
      * Get all links via id

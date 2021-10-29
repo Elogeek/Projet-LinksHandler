@@ -19,6 +19,7 @@ else {
         $controller = "Elogeek\\LinksHandler\\Controller\\" . ucfirst(filter_var($_GET['controller'], FILTER_SANITIZE_STRING)) . "Controller";
 
         if (class_exists($controller)) {
+
             //echo $controller;
             $controller = new $controller();
 

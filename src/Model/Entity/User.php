@@ -2,6 +2,7 @@
 namespace Elogeek\LinksHandler\Model\Entity;
 
 class User {
+
     private ?int $id;
     private ?string $name;
     private ?string $firstname;

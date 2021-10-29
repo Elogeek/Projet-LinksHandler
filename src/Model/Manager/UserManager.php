@@ -28,22 +28,26 @@ class UserManager {
 
     /**
      * Return a id user
-     * @param User $id
-     * @return bool
+     * @param int $id
+     * @return User|null
      */
-    public function getById(User $id): bool {
+    public function getById(int $id): ?User {
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_user WHERE id = :id");
-        $request->bindValue(':id', $id->getId());
+        $request->bindValue(':id', $id);
         $request->execute();
-        return $request;
+        $user = null;
+        if($request->execute() && $data = $request->fetch()) {
+            $user = new User($data['id'],$data['nom'],$data['prenom'],$data['mail'],$data['pass']);
+        }
+        return $user;
     }
 
     /**
      * Return an user via id
-     * @param $mail
+     * @param string $mail
      * @return User|null
      */
-    public function searchMail($mail): ?User {
+    public function searchMail(string $mail): ?User {
 
         $req =DB::getInstance()->prepare("SELECT * FROM prefix_user WHERE mail = :mail");
         $req->bindValue("mail",$mail);
