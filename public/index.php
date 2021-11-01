@@ -32,24 +32,31 @@ else {
                 //switch Controller
 
                 switch ($_GET['action']) {
+                    // Add a link
                     case 'add':
                         $controller->add();
                         break;
+                    // Update a link
                     case 'update' :
                         $controller->update();
                         break;
+                    //Delete a link
                     case 'delete' :
                         $controller->delete();
                         break;
+                    // Disconnect a user
                     case 'logout' :
                         $controller->logout();
                         break;
+                    // home
                     default :
                         $controller->showHome();
                 }
+                
             }
 
-        $controller->showHome();
+            $controller->showHome();
+
         }
 
     }
