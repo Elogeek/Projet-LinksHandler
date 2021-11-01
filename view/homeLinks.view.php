@@ -4,7 +4,7 @@
 use Elogeek\LinksHandler\Model\Manager\LinkManager;
 
 $linkManager = new LinkManager();
-$allLinks = $linkManager->getLinks();
+$allLinks = $linkManager->getLinks($_SESSION['user']);
 
 ?>
 <div class="homePage"><?php

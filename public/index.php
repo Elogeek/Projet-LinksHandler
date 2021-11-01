@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 use Elogeek\LinksHandler\Controller\HomeController;
 use Elogeek\LinksHandler\Controller\LinkController;
@@ -12,22 +14,29 @@ session_start();
 if( (!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
     (new UserController())->showLogin();
 }
-
 else {
     $user = $_SESSION['user'];
 
     if (isset($_GET['controller'])) {
         $controller = filter_var($_GET['controller'], FILTER_SANITIZE_STRING);
 
-        switch($controller) {
+        switch ($controller) {
 
             case 'link':
                 $controller = new LinkController();
-                if(isset($_GET['action'])) {
-                    chooseLinksControllerAction($controller, $_GET['action']);
+                if (isset($_GET['action'])) {
+                    chooseLinksControllerAction($controller);
                 }
                 else {
                     $controller->homeLinks();
+                }
+                break;
+
+            // Connect or disconnect a user via la fct connect
+            case 'user':
+                $controller = new UserController();
+                if (isset($_GET['action'])) {
+                    routeUser($controller);
                 }
                 break;
 
@@ -39,15 +48,15 @@ else {
     else {
         $controller = new HomeController();
         $controller->showHome();
-    }
 
+    }
 }
 
 
 /**
  * Choose the right action to call from links controller.
  */
-function chooseLinksControllerAction(LinkController $controller, string $action = null) {
+function chooseLinksControllerAction(LinkController $controller) {
 
     switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
         // Add a link
@@ -62,14 +71,31 @@ function chooseLinksControllerAction(LinkController $controller, string $action 
             break;
         //Delete a link manque l'id
         case 'delete' :
-            $controller->delete();
-            break;
-        // Disconnect a user pas dans celui-ci
-        case 'logout' :
-            $controller->logout();
+            if(isset($_GET['id'])) {
+                $controller->delete((int)$_GET['id']);
+            }
             break;
         // home links
         default :
             $controller->homeLinks();
     }
+}
+
+
+/**
+ * If connect / if disconnect a user
+ * @param UserController $controller
+ * @param string|null $action
+ */
+function routeUser(UserController $controller) {
+
+    switch(filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
+        case 'logout' :
+            $controller->logout();
+            break;
+        default :
+            $controller->login();
+
+    }
+
 }

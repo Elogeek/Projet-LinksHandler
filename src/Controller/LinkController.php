@@ -91,10 +91,11 @@ class LinkController extends BaseController {
     /**
      *  Delete a link in the BDD
      */
-    public function delete(): void {
+    public function delete(int $linkId): void {
 
-        (new LinkManager())->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
-
+        $manager = new LinkManager();
+        $manager->searchLinks($linkId);
+        $manager ->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
         header("Location: /index.php");
     }
 
