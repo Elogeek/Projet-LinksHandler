@@ -34,11 +34,11 @@ else {
 
             // Connect or disconnect a user via la fct connect
             case 'user':
-                $controller = new UserController();
                 if (isset($_GET['action'])) {
+                    $controller = new UserController();
                     routeUser($controller);
+                    break;
                 }
-                break;
 
             default:
                 $controller = new HomeController();

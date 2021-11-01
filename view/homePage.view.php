@@ -7,6 +7,15 @@
             $a = '<a href="index.php?controller=link&action=update&id=' . $link->getId() . '"><i class="far fa-edit"></i></a>';
         } ?>
         <div class="linkImage">
+            <div class="newLink">
+                <a href="/index.php?controller=link&action=update&id">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </div>
+            <div class="newLink">
+                <a href="/index.php?controller=link&action=delete&id">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
             <div class="image"><img src="/assets/image/imgLinks.webp" alt="Image"></div>
             <div class="linkName"><a href="<?= $link->getHref()?>" target="<?= $link->getTarget()?>"><?= $link->getName()?></a></div>
         </div> <?php
