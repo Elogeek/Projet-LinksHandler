@@ -56,29 +56,36 @@ class LinkController extends BaseController {
     /**
      * Update a link into the BDD
      */
-    public function update(Link $link): void {
+    public function update(int $linkId): void {
 
-        $href = filter_var($_POST['hrefLink'], FILTER_SANITIZE_STRING);
-        $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-        $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-        $url_status = UrlStatus::get($href);
+        $manager = new LinkManager();
+        $link = $manager->searchLinks($linkId);
 
-        if($url_status->getStatusCode() === 200) {
-            $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
-            $link
-                ->setHref($href)
-                ->setTitle($title)
-                ->setName($name);
+        if($link !== null) {
+            $href = filter_var($_POST['hrefLink'], FILTER_SANITIZE_STRING);
+            $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+            $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+            $url_status = UrlStatus::get($href);
 
-            (new LinkManager())->updateLink($link);
-            // If ok update => display homeLinks
-            $this->homeLinks();
+            if ($url_status->getStatusCode() === 200) {
+                $link = $manager->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+                $link
+                    ->setHref($href)
+                    ->setTitle($title)
+                    ->setName($name);
+
+                (new LinkManager())->updateLink($link);
+                // If ok update => display homeLinks
+                $this->homeLinks();
+            } else {
+                // If not update => display index
+                header("Location: /index.php");
+            }
         }
         else {
-            // If not update => display index
+            // The link does not exists.
             header("Location: /index.php");
         }
-
     }
 
     /**

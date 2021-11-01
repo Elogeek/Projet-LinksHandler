@@ -14,51 +14,62 @@ if( (!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['logi
 }
 
 else {
-
     $user = $_SESSION['user'];
 
     if (isset($_GET['controller'])) {
-        // pas de src ici car Elogeek//LinkHandler => remplace src
-        $controller = "Elogeek\\LinksHandler\\Controller\\" . ucfirst(filter_var($_GET['controller'], FILTER_SANITIZE_STRING)) . "Controller";
+        $controller = filter_var($_GET['controller'], FILTER_SANITIZE_STRING);
 
-        if (class_exists($controller)) {
+        switch($controller) {
 
-            //echo $controller;
-            $controller = new $controller();
-
-            if (isset($_GET['action'])) {
-                $action = filter_var($_GET['action'], FILTER_SANITIZE_STRING);
-
-                //switch Controller
-
-                switch ($_GET['action']) {
-                    // Add a link
-                    case 'add':
-                        $controller->add();
-                        break;
-                    // Update a link
-                    case 'update' :
-                        $controller->update();
-                        break;
-                    //Delete a link
-                    case 'delete' :
-                        $controller->delete();
-                        break;
-                    // Disconnect a user
-                    case 'logout' :
-                        $controller->logout();
-                        break;
-                    // home
-                    default :
-                        $controller->showHome();
+            case 'link':
+                $controller = new LinkController();
+                if(isset($_GET['action'])) {
+                    chooseLinksControllerAction($controller, $_GET['action']);
                 }
-                
-            }
+                else {
+                    $controller->homeLinks();
+                }
+                break;
 
-            $controller->showHome();
-
+            default:
+                $controller = new HomeController();
+                $controller->showHome();
         }
-
+    }
+    else {
+        $controller = new HomeController();
+        $controller->showHome();
     }
 
+}
+
+
+/**
+ * Choose the right action to call from links controller.
+ */
+function chooseLinksControllerAction(LinkController $controller, string $action = null) {
+
+    switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
+        // Add a link
+        case 'add':
+            $controller->add();
+            break;
+        // Update a link
+        case 'update' :
+            if(isset($_GET['id'])) {
+                $controller->update((int)$_GET['id']);
+            }
+            break;
+        //Delete a link manque l'id
+        case 'delete' :
+            $controller->delete();
+            break;
+        // Disconnect a user pas dans celui-ci
+        case 'logout' :
+            $controller->logout();
+            break;
+        // home links
+        default :
+            $controller->homeLinks();
+    }
 }
