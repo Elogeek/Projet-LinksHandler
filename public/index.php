@@ -37,8 +37,8 @@ else {
                 if (isset($_GET['action'])) {
                     $controller = new UserController();
                     routeUser($controller);
-                    break;
                 }
+                break;
 
             default:
                 $controller = new HomeController();
@@ -69,7 +69,7 @@ function chooseLinksControllerAction(LinkController $controller) {
                 $controller->update((int)$_GET['id']);
             }
             break;
-        //Delete a link manque l'id
+        //Delete a link
         case 'delete' :
             if(isset($_GET['id'])) {
                 $controller->delete((int)$_GET['id']);
@@ -85,7 +85,6 @@ function chooseLinksControllerAction(LinkController $controller) {
 /**
  * If connect / if disconnect a user
  * @param UserController $controller
- * @param string|null $action
  */
 function routeUser(UserController $controller) {
 
