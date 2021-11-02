@@ -62,6 +62,18 @@ header a:hover {
     margin: 3rem 0 0 0.8rem;
 }
 
+.newLink {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: orchid;
+    font-size:2rem;
+}
+
+.newLink:hover {
+    color:crimson;
+}
+
 .linkImage {
     padding: 3rem;
     margin-bottom: 30px;
