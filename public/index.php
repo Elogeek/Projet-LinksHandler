@@ -32,7 +32,7 @@ else {
                 }
                 break;
 
-            // Connect or disconnect a user via la fct connect
+            // Connect or disconnect a user via la fct routeUser
             case 'user':
                 if (isset($_GET['action'])) {
                     $controller = new UserController();

@@ -21,7 +21,6 @@
                         Ajouter un lien
                     </a>
                 </div>
-
                 <div class="account" id="btnDisconnect">
                     <a href="/index.php?controller=user&action=logout" title="Déconnection">
                         <i class="fas fa-user-slash"></i>
