@@ -7,6 +7,7 @@ use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
 use Elogeek\LinksHandler\Model\Entity\User;
 
+
 require '../vendor/autoload.php';
 
 session_start();
@@ -21,34 +22,28 @@ else {
         $controller = filter_var($_GET['controller'], FILTER_SANITIZE_STRING);
 
         switch ($controller) {
-
+            // switch les actions deLinkController via la fct chooseLinksControllerAction()
             case 'link':
                 $controller = new LinkController();
                 if (isset($_GET['action'])) {
                     chooseLinksControllerAction($controller);
+                    break;
                 }
-                else {
-                    $controller->homeLinks();
-                }
-                break;
 
-            // Connect or disconnect a user via la fct routeUser
+            // Connect or disconnect a user via la fct routeUser()
             case 'user':
                 if (isset($_GET['action'])) {
                     $controller = new UserController();
                     routeUser($controller);
+                    break;
                 }
-                break;
 
             default:
-                $controller = new HomeController();
-                $controller->showHome();
+                (new LinkController())->homeLinks();
         }
     }
     else {
-        $controller = new HomeController();
-        $controller->showHome();
-
+        (new LinkController())->homeLinks();
     }
 }
 
