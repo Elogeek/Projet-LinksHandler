@@ -23,4 +23,5 @@
     <div class="homeBtn">
         <a href="/index.php">Retour</a>
     </div>
+
 </div>
