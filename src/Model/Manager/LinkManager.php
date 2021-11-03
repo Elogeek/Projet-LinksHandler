@@ -32,9 +32,10 @@ class LinkManager {
 
     /**
      * Get all links
-     * @return array
+     * @param User $user
+     * @return array|null
      */
-    public function getLinks(User $user): array {
+    public function getLinks(User $user): ?array {
         $array = [];
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE user_fk = :user_id");
         $request->bindValue(':user_id', $user->getId());
