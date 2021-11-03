@@ -24,7 +24,7 @@ class LinkController extends BaseController {
     /**
      * Redirects into updateLink page
      */
-    public function updtLinks(): void {
+    public function updtLink(): void {
         $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
         $this->render("updateLink", [$link]);
     }
@@ -74,9 +74,10 @@ class LinkController extends BaseController {
                     ->setName($name);
 
                 (new LinkManager())->updateLink($link);
+
+                // If ok update => display homeLinks
                 $this->updtLinks();
-            }
-            else {
+            } else {
                 // If ok update => display homeLinks
                 $this->homeLinks();
             }
@@ -96,6 +97,7 @@ class LinkController extends BaseController {
         $manager->searchLinks($linkId);
         $manager->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
         $this->updtLinks();
+
     }
 
 }

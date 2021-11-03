@@ -16,8 +16,7 @@ class UserController extends BaseController {
     /**
      * Login user and create a session
      */
-    public function login(): void
-    {
+    public function login(): void {
         $mail = filter_var($_POST['mail'], FILTER_SANITIZE_EMAIL);
         $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 

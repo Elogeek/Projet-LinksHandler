@@ -11,6 +11,14 @@ class  HomeController extends BaseController {
      * Display the homePage
      */
     public function showHome(User $user = null): void {
+
+            $links = [];
+            if($user !== null) {
+                $links = (new LinkManager())->getLinks($user);
+            }
+            $this->render("homePage", [$links]);
+        }
+
         $links = [];
         if($user !== null) {
             $links = (new LinkManager())->getLinks($user);
@@ -18,4 +26,5 @@ class  HomeController extends BaseController {
         $this->render("homePage", [$links]);
     }
 
-}
+
+    }
