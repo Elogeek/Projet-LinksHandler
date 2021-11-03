@@ -62,7 +62,7 @@ header a:hover {
     margin: 3rem 0 0 0.8rem;
 }
 
-.newLink {
+.newLink a {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -70,7 +70,7 @@ header a:hover {
     font-size:2rem;
 }
 
-.newLink:hover {
+.newLink a:hover {
     color:crimson;
 }
 
