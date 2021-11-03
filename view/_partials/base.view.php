@@ -21,7 +21,6 @@
                         Ajouter un lien
                     </a>
                 </div>
-
                 <div class="account" id="btnDisconnect">
                     <a href="/index.php?controller=user&action=logout" title="Déconnection">
                         <i class="fas fa-user-slash"></i>
@@ -33,7 +32,7 @@
         else { ?>
             <header>
                 <div id="newLink">
-                    <a href="/index.php?controller=link&action=add">
+                    <a href="/index.php?controller=link">
                         <i class="fas fa-plus-square"></i>
                         Ajouter un lien
                     </a>

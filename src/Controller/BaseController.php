@@ -9,8 +9,7 @@ class BaseController {
      * @param string $view
      * @param array $data
      */
-    public function render(string $view, array $data = []): void
-    {
+    public function render(string $view, array $data = []): void {
         ob_start();
         require __DIR__ . "/../../view/" . $view . ".view.php";
         $html = ob_get_clean();
