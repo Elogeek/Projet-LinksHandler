@@ -84,7 +84,6 @@ class LinkController extends BaseController {
         else {
             // The link does not exists.
             header("Location: /index.php");
-            //$this->homeLinks();
         }
     }
 
