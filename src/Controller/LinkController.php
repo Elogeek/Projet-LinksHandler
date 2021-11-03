@@ -43,12 +43,11 @@ class LinkController extends BaseController {
         if($url_status->getStatusCode() === 200) {
             $link = new Link(null, $href, $title,"_blank", $name);
             (new LinkManager())->addLinks($link);
-            // if add link => display homePageLink
-            $this->homeLinks();
+            $this->addLinks();
         }
         else {
-            // if not add link => redirect to index
-            header("Location: /index.php");
+            // if not add link => redirect to homePageLink
+            $this->homeLinks();
         }
 
     }
@@ -75,18 +74,18 @@ class LinkController extends BaseController {
                     ->setName($name);
 
                 (new LinkManager())->updateLink($link);
+
+                // If ok update => display homeLinks
+                $this->updtLinks();
+            } else {
                 // If ok update => display homeLinks
                 $this->homeLinks();
-            } else {
-                // If not update => display index
-                header("Location: /index.php");
             }
         }
         else {
             // The link does not exists.
             header("Location: /index.php");
         }
-
     }
 
     /**
@@ -94,10 +93,10 @@ class LinkController extends BaseController {
      */
     public function delete(int $linkId): void {
 
-    $manager = new LinkManager();
-    $manager->searchLinks($linkId);
-    $manager ->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
-    header("Location: /index.php");
+        $manager = new LinkManager();
+        $manager->searchLinks($linkId);
+        $manager->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+        $this->updtLinks();
 
     }
 

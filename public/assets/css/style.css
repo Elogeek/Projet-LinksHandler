@@ -62,17 +62,17 @@ header a:hover {
     margin: 3rem 0 0 0.8rem;
 }
 
-.optionLink a {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    color: orchid;
-    font-size:2rem;
-}
+ .optionLink a {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     color: orchid;
+     font-size:2rem;
+ }
 
-.optionLink a:hover {
-    color:crimson;
-}
+ .optionLink a:hover{
+     color:crimson;
+ }
 
 .linkImage {
     padding: 3rem;
