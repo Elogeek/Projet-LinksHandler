@@ -17,7 +17,7 @@ body {
     display: flex;
 }
 
-/* Design Header */
+/* Design Header (menu of the site) */
 header {
     padding: 1.2rem;
     display: flex;
@@ -61,19 +61,25 @@ header a:hover {
  h1 {
     margin: 3rem 0 0 0.8rem;
 }
-
+ /* Design link update and delete a link */
  .optionLink a {
      display: flex;
      flex-direction: row;
      flex-wrap: nowrap;
-     color: orchid;
-     font-size:2rem;
+     justify-content: left;
  }
 
- .optionLink a:hover{
+ #linkDlt,#linkUpdt {
+     padding: 0.5rem;
+     font-size:2rem;
+     color: orchid;
+ }
+
+ .optionLink a:hover {
      color:crimson;
  }
 
+/* Design img of the link */
 .linkImage {
     padding: 3rem;
     margin-bottom: 30px;

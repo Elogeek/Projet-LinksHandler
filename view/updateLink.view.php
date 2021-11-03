@@ -1,7 +1,6 @@
 
 <div id="updateLinks">
 
-    <i class="fas fa-edit"></i>
     <form action="/index.php?controller=link&action=update&id<?= $data[0]->getId() ?>" method="POST">
         <div>
             <label for="hrefLink">Lien :</label>

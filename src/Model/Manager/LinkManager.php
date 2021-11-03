@@ -6,6 +6,7 @@ use Elogeek\LinksHandler\Model\DB;
 use Elogeek\LinksHandler\Model\Entity\Link;
 use Elogeek\LinksHandler\Model\Entity\User;
 
+
 class LinkManager {
 
     /**
