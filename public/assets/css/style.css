@@ -62,7 +62,7 @@ header a:hover {
     margin: 3rem 0 0 0.8rem;
 }
 
-.newLink a {
+.optionLink a {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -70,7 +70,7 @@ header a:hover {
     font-size:2rem;
 }
 
-.newLink a:hover {
+.optionLink a:hover {
     color:crimson;
 }
 

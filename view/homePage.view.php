@@ -7,7 +7,7 @@
             $a = '<a href="index.php?controller=link&action=update&id=' . $link->getId() . '"><i class="far fa-edit"></i></a>';
         } ?>
         <div class="linkImage">
-            <div class="newLink">
+            <div class="optionLink">
                 <a href="/index.php?controller=link&action=update&id"><i class="fas fa-edit"></i></a>
                 <a href="/index.php?controller=link&action=delete&id"><i class="fas fa-trash-alt"></i></a>
             </div>
