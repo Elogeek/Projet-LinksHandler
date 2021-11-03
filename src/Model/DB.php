@@ -63,6 +63,24 @@ class DB {
     }
 
     /**
+     * Check if password is correct
+     * Check if the password contains uppercase, lowercases, numbers at least 5 characters.
+     * @param $psswd
+     * @return bool
+     */
+    public static function checkPassword($psswd): bool {
+        $majuscule = preg_match('@[A-Z]@', $psswd);
+        $minuscule = preg_match('@[a-z]@', $psswd);
+        $number = preg_match('@[0-9]@', $psswd);
+
+        if(!$majuscule || !$minuscule || !$number || strlen($psswd) < 5 ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * avoid clone by another dev
      */
     public function __clone() {}

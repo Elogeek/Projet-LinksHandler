@@ -44,4 +44,7 @@ class UserController extends BaseController {
         header("Location: /index.php");
     }
 
+    public function register() {
+        $this->render("login");
+    }
 }

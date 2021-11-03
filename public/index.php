@@ -92,6 +92,9 @@ function routeUser(UserController $controller) {
         case 'logout' :
             $controller->logout();
             break;
+        case 'register':
+            $controller->register();
+            break;
         default :
             $controller->login();
 

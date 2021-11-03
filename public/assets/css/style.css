@@ -120,7 +120,7 @@ form {
     align-items: center;
 }
 
-.contLinkAdd label, #loginDiv label {
+.contLinkAdd label, #loginContainer label, #containerRegister label {
     padding: 1rem;
 }
 
@@ -136,7 +136,7 @@ input[type=submit] {
     width: 21vh;
 }
 
-#loginDiv, .contLinkAdd {
+#loginContainer,#containerRegister .contLinkAdd {
     padding: 2rem;
     margin: 2rem;
     background-color: darkgray;
@@ -145,11 +145,11 @@ input[type=submit] {
     font-size: 2rem;
 }
 
-#loginDiv div, #addLinkDiv div {
+#loginContainer div,#containerRegister div, #addLinkDiv div {
     margin-top: 1.5rem;
 }
 
-#loginDiv a, #addLinkDiv a {
+#loginContainer a, #containerRegister a, #addLinkDiv a {
     color: white;
     margin-left:2rem;
 }
