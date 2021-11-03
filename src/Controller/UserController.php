@@ -7,10 +7,24 @@ use Elogeek\LinksHandler\Model\Manager\UserManager;
 class UserController extends BaseController {
 
     /**
-     * Redirects into login page
+     * Redirect into login page
      */
     public function showLogin() {
         $this->render("login");
+    }
+
+    /**
+     * Redirect to loginPage
+     */
+    public function register() {
+        $this->render("login");
+    }
+
+    /**
+     * Redirect to contactPage
+     */
+    public function contact() {
+        $this->render("contact");
     }
 
     /**
@@ -44,7 +58,4 @@ class UserController extends BaseController {
         header("Location: /index.php");
     }
 
-    public function register() {
-        $this->render("login");
-    }
 }
