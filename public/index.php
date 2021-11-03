@@ -41,13 +41,13 @@ else {
                 }
 
             default:
-                $controller = new HomeController();
-                $controller->showHome();
+                $controller = new LinkController();
+                $controller->homeLinks();
         }
     }
     else {
-        $controller = new HomeController();
-        $controller->showHome();
+        $controller = new LinkController();
+        $controller->homeLinks();
 
     }
 }
