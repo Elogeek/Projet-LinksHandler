@@ -10,7 +10,7 @@ class Link {
     private ?string $target;
     private ?string $name;
     private ?int $userFk;
-    private ?int $validated;
+
 
     /**
      * Link constructor.
@@ -20,14 +20,14 @@ class Link {
      * @param string|null $target
      * @param string|null $name
      */
-    public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null, int $userFk = null, int $validated = 0) {
+    public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null, int $userFk = null) {
         $this->id = $id;
         $this->href = $href;
         $this->title = $title;
         $this->target = $target;
         $this->name = $name;
         $this->userFk = $userFk;
-        $this->validated = $validated;
+
     }
 
 
@@ -134,22 +134,6 @@ class Link {
     public function setUserFk(?int $userFk): Link {
         $this->userFk = $userFk;
         return $this;
-    }
-
-    /**
-     * Set the Link validation status
-     * @return int
-     */
-    public function getValidated(): int {
-        return $this->validated;
-    }
-
-    /**
-     *  Return the link validation status
-     * @param int $validated
-     */
-    public function setValidated(int $validated): void {
-        $this->validated = $validated;
     }
 
 }

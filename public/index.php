@@ -3,7 +3,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-use Elogeek\LinksHandler\Controller\HomeController;
 use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
 use Elogeek\LinksHandler\Model\Entity\User;
@@ -61,17 +60,19 @@ function chooseLinksControllerAction(LinkController $controller) {
     switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
         // Add a link
         case 'add':
-            $controller->addLinkFormSubmit();
+            $controller->addLinkFormSubmit($_POST);
+            echo"cacao";
             break;
         // Display form addLink
         case 'display-add-link-form':
             $controller->displayAddLinkForm();
+            echo"cacaoHere";
             break;
 
         // Update a link
         case 'update' :
             if (isset($_GET['id'])) {
-                $controller->updateFormSubmit((int)$_GET['id']);
+                $controller->updateFormSubmit((int)$_GET['id'], $_POST);
             }
             break;
         // Display form update a link
@@ -81,7 +82,7 @@ function chooseLinksControllerAction(LinkController $controller) {
         //Delete a link
         case 'delete' :
             if (isset($_GET['id'])) {
-                $controller->deleteFormSubmit((int)$_GET['id']);
+                $controller->deleteFormSubmit((int)$_GET['id'],$_POST);
             }
             break;
         // Display homeLinks by default

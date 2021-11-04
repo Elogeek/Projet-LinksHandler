@@ -56,7 +56,7 @@ class LinkManager {
      */
     public function searchLinks($id): ?Link {
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE id = :id");
-        $request->bindValue("id", $id);
+        $request->bindValue(":id", $id);
         $link = null;
 
         if($request->execute() && $result = $request->fetch()) {
@@ -71,14 +71,13 @@ class LinkManager {
      * @return bool
      */
     public function updateLink(Link $l): bool {
-
-        $request = DB::getInstance()->prepare("UPDATE  prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk WHERE id = :id");
-        $request->bindValue("id", $l->getHref());
-        $request->bindValue("href", $l->getTitle());
-        $request->bindValue("title", $l->getTarget());
-        $request->bindValue("target", $l->getName());
-        $request->bindValue("name", $l->getId());
-        $request->bindValue("user_fk",$l->getUserFk());
+        $request = DB::getInstance()->prepare("UPDATE prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk WHERE id = :id");
+        $request->bindValue(":id", $l->getHref());
+        $request->bindValue(":href", $l->getTitle());
+        $request->bindValue(":title", $l->getTarget());
+        $request->bindValue(":target", $l->getName());
+        $request->bindValue(":name", $l->getId());
+        $request->bindValue(":userFk",$l->getUserFk());
 
         return $request->execute();
 
@@ -92,7 +91,7 @@ class LinkManager {
     public function deleteLink(Link $l): bool {
 
         $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
-        $request->bindValue("id", $l->getId());
+        $request->bindValue(":id", $l->getId());
         return $request->execute();
     }
 

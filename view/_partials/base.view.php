@@ -54,6 +54,6 @@
     <?= $html ?>
 
 </div>
-<script src="/public/assets/js/animationLabel.js"></script>
+
 </body>
 </html>

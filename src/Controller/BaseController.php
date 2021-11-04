@@ -4,8 +4,8 @@ namespace Elogeek\LinksHandler\Controller;
 
 class BaseController {
 
-    private ?string $successMessage = null;
-    private ?string $errorMessage = null;
+    private static ?string $successMessage = null;
+    private static ?string $errorMessage = null;
 
     /**
      * Render for redirects page into base view page
@@ -13,6 +13,16 @@ class BaseController {
      * @param array $data
      */
     public function render(string $view, array $data = []): void {
+        if(self::$errorMessage !== null) {
+            $error = self::$errorMessage;
+            self::$errorMessage = null;
+        }
+
+        if(self::$successMessage !== null) {
+            $success = self::$successMessage;
+            self::$successMessage = null;
+        }
+
         ob_start();
         require __DIR__ . "/../../view/" . $view . ".view.php";
         $html = ob_get_clean();
@@ -24,7 +34,7 @@ class BaseController {
      * @param string $message
      */
     public function setSuccessMessage(string $message): void {
-        $this->successMessage = $message;
+        self::$successMessage = $message;
     }
 
     /**
@@ -32,7 +42,7 @@ class BaseController {
     * @param string $message
     */
     public function setErrorMessage(string $message): void {
-        $this->errorMessage = $message;
+        self::$errorMessage = $message;
     }
 
     /**
@@ -40,25 +50,6 @@ class BaseController {
      * @return bool
      */
     public function checkFormIsSubmitted(): bool {
-        return $_SERVER ['REQUEST_METHOD'] === 'POST' && !empty($_POST) && isset($_POST['submit']);
+        return isset($_POST['submit']);
     }
-
-    /**
-     *  Return true if all provided parameters was set.
-     * @param array $array
-     * @param mixed ...$keys
-     * @return bool
-     */
-    public function formNotAllEmpty(array $array, ...$keys): bool {
-
-        foreach ($keys as $key) {
-            if (isset($array[$key]) || empty($array[$key])) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-
 }

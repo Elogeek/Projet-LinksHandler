@@ -3,10 +3,10 @@
 
     <!-- Displays the successMessage if success either displays the errorMessage if an error has occurred occurred while adding the link-->
     <!-- <div class="successMessage">
-        <span><?= $link->getValidated() === 1 ? "setSuccessMessage" : "setErrorMessage"; ?></span>
+        <span><?= $link ? "setSuccessMessage" : "setErrorMessage"; ?></span>
     </div>
     <div class="errorMessage">
-        <span><?= $link->getValidated() === 1 ? "succes" : "error"; ?></span>
+        <span><?= $link ? "success" : "error"; ?></span>
     </div>
     -->
 

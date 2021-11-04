@@ -9,7 +9,7 @@ class UserController extends BaseController {
     /**
      * Redirects into login page
      */
-    public function showLogin() {
+    public function showLogin(): void {
         $this->render("login");
     }
 
@@ -35,7 +35,7 @@ class UserController extends BaseController {
     /**
      * Disconnect an user
      */
-    public function logout() {
+    public function logout(): void {
         // I'm replacing the $ _SESSION array with an array that contains nothing.
         $_SESSION = [];
         session_unset();

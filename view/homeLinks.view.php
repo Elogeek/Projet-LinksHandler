@@ -3,8 +3,12 @@
     { ?>
         <div class="linkImage">
             <div class="optionLink">
-                <a id="linkUpdt" href="/index.php?controller=link&action=update&id"><i class="fas fa-edit"></i></a>
-                <a id="linkDlt" href="/index.php?controller=link&action=delete&id"><i class="fas fa-trash-alt"></i></a>
+                <a id="linkUpdt" href="/index.php?controller=link&action=display-update-link-form&id=<?= $link->getId()  ?>">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a id="linkDlt" href="/index.php?controller=link&action=delete&id">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
             </div>
             <div class="image"><img src="/assets/image/imgLinks.webp" alt="img par défault"></div>
             <div class="linkName">
