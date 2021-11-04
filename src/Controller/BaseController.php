@@ -20,7 +20,7 @@ class BaseController {
     }
 
     /**
-     * Add a succes message to be displayed.
+     * Add a success message to be displayed.
      * @param string $message
      */
     public function setSuccessMessage(string $message): void {

@@ -1,7 +1,7 @@
 
 <div id="addLinkDiv">
 
-    <!-- Display message soit display succes if succes soit display errorMessage if error lors de l'ajout du lien-->
+    <!-- Displays the successMessage if success either displays the errorMessage if an error has occurred occurred while adding the link-->
     <!-- <div class="successMessage">
         <span><?= $link->getValidated() === 1 ? "setSuccessMessage" : "setErrorMessage"; ?></span>
     </div>
