@@ -16,7 +16,7 @@
         if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
             <header>
                 <div class="newLink">
-                    <a href="/index.php?controller=link&action=add">
+                    <a href="/index.php?controller=link&action=display-add-link-form">
                         <i class="fas fa-plus-square"></i>
                         Ajouter un lien
                     </a>

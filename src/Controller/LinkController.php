@@ -10,7 +10,7 @@ class LinkController extends BaseController {
     /**
      * Redirects into addLink page
      */
-    public function addLinks(): void {
+    public function displayAddLinkForm(): void {
        $this->render("addLink");
     }
 
@@ -18,7 +18,15 @@ class LinkController extends BaseController {
      * Display a homePage links
      */
     public function homeLinks(): void {
-        $this->render("homeLinks");
+        $linkManager = new LinkManager();
+        $allLinks = $linkManager->getLinks($_SESSION['user']);
+        if($allLinks === null) {
+            $allLinks = [];
+        }
+
+        $this->render("homeLinks", [
+            "links" => $allLinks
+        ]);
     }
 
     /**
@@ -26,13 +34,15 @@ class LinkController extends BaseController {
      */
     public function linkUpdate(): void {
         $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
-        $this->render("updateLink", [$link]);
+        $this->render("updateLink", [
+            "link" => $link
+        ]);
     }
 
     /**
      * Add a link in the BDD
      */
-    public function add(): void {
+    public function addLinkFormSubmit(): void {
 
         $href = filter_var($_POST['hrefLink'],FILTER_SANITIZE_STRING);
         $title = filter_var($_POST['title'],FILTER_SANITIZE_STRING);

@@ -15,7 +15,8 @@ session_start();
 
 if ((!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
     (new UserController())->showLogin();
-} else {
+}
+else {
     $user = $_SESSION['user'];
 
     if (isset($_GET['controller'])) {
@@ -60,8 +61,13 @@ function chooseLinksControllerAction(LinkController $controller) {
     switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
         // Add a link
         case 'add':
-            $controller->add();
+            $controller->addLinkFormSubmit();
             break;
+
+        case 'display-add-link-form':
+            $controller->displayAddLinkForm();
+            break;
+
         // Update a link
         case 'update' :
             if (isset($_GET['id'])) {
