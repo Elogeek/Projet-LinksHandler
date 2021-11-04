@@ -9,6 +9,7 @@ class User {
     private ?string $mail;
     private ?string $pass;
 
+
     /**
      * Link constructor.
      * @param int|null $id

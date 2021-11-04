@@ -74,7 +74,7 @@ function chooseLinksControllerAction(LinkController $controller) {
                 $controller->updateFormSubmit((int)$_GET['id']);
             }
             break;
-        // Update a link
+        // Display form update a link
         case 'display-update-link-form' :
             $controller->displayUpdateLinkForm();
             break;
@@ -84,7 +84,7 @@ function chooseLinksControllerAction(LinkController $controller) {
                 $controller->deleteFormSubmit((int)$_GET['id']);
             }
             break;
-        // home links
+        // Display homeLinks by default
         default :
             $controller->homeLinks();
     }

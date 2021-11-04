@@ -161,6 +161,27 @@ input[type=submit] {
 }
 
 /**
+* Display message succes
+*/
+.successMessage, .errorMessage {
+    font-weight: bold;
+    padding: 1rem;
+    color: white;
+    height: 6rem;
+    text-align: center;
+}
+.successMessage {
+    background-color: lime;
+}
+
+/**
+* Display message error
+*/
+.errorMessage {
+    background-color: crimson;
+}
+
+/**
  * Responsive mode
  */
 @media screen and (max-width: 950px) {

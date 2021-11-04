@@ -42,21 +42,40 @@ class LinkController extends BaseController {
     /**
      * Add a link in the BDD
      */
-    public function addLinkFormSubmit(): void {
+    public function addLinkFormSubmit(array $request): void {
+        // I check if the form is submitted correctly
+        if($this->checkFormIsSubmitted()) {
+            //if the form is well submitted and is well completed then i add it in the database
+            if($this->formNotAllEmpty($request)) {
 
-        $href = filter_var($_POST['hrefLink'],FILTER_SANITIZE_STRING);
-        $title = filter_var($_POST['title'],FILTER_SANITIZE_STRING);
-        $name = filter_var($_POST['name'],FILTER_SANITIZE_STRING);
+                $href = filter_var($request['hrefLink'],FILTER_SANITIZE_STRING);
+                $title = filter_var($request['title'],FILTER_SANITIZE_STRING);
+                $name = filter_var($request['name'],FILTER_SANITIZE_STRING);
 
-        $url_status = UrlStatus::get($href);
+                // add user-fk in the BDD
+                $userFk = (new Link())->getUserFk();
 
-        if($url_status->getStatusCode() === 200) {
-            $link = new Link(null, $href, $title,"_blank", $name);
-            (new LinkManager())->addLinks($link);
-        }
-        else {
-            // if not add link => redirect to homePageLink
-            $this->homeLinks();
+                $url_status = UrlStatus::get($href);
+
+                // If success
+                if($url_status->getStatusCode() === 200) {
+                    $link = new Link(null, $href, $title,"_blank", $name,$userFk);
+                    (new LinkManager())->addLink($link);
+                    $this->setSuccessMessage("Votre lien a bien été ajouté.");
+                    // if succes add link -> redirect to homePageLink
+                    $this->homeLinks();
+                }
+                // If error
+                else {
+                    $this->setErrorMessage("Une erreur est survenue en ajoutant le lien");
+                }
+
+            }
+            // If error
+            else {
+                $this->setErrorMessage("Tous les champs doivent être remplis !");
+            }
+
         }
 
     }
@@ -64,19 +83,21 @@ class LinkController extends BaseController {
     /**
      * Update a link into the BDD
      */
-    public function updateFormSubmit (int $linkId): void {
-
+    public function updateFormSubmit (int $linkId, array $request): void {
+        // First I look for the id of the link I want to modify
         $manager = new LinkManager();
         $link = $manager->searchLinks($linkId);
-
-        if($link !== null) {
-            $href = filter_var($_POST['hrefLink'], FILTER_SANITIZE_STRING);
-            $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-            $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-            $url_status = UrlStatus::get($href);
-
-            if ($url_status->getStatusCode() === 200) {
-                $link = $manager->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+        // I check if the form is submitted correctly
+        if($this->checkFormIsSubmitted()) {
+            // If the form is well submitted and is well completed then I add the changes in the database
+            if($this->formNotAllEmpty($request)) {
+                $href = filter_var($request['hrefLink'], FILTER_SANITIZE_STRING);
+                $title = filter_var($request['title'], FILTER_SANITIZE_STRING);
+                $name = filter_var($request['name'], FILTER_SANITIZE_STRING);
+                $url_status = UrlStatus::get($href);
+            }
+            if($url_status->getStatusCode() === 200) {
+                $link = (filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
                 $link
                     ->setHref($href)
                     ->setTitle($title)
@@ -88,23 +109,37 @@ class LinkController extends BaseController {
             else {
                 // If ok update => display homeLinks
                 $this->homeLinks();
+                $this->setSuccessMessage("Les modifications du lien ont réussies.");
             }
+
         }
         else {
             // The link does not exists.
-            header("Location: /index.php");
+            $this->setErrorMessage("Le lien n'existe pas !");
         }
+
     }
 
     /**
      *  Delete a link in the BDD
      */
-    public function deleteFormSubmit (int $linkId): void {
+    public function deleteFormSubmit (int $linkId, array $request): void {
 
         $manager = new LinkManager();
         $manager->searchLinks($linkId);
-        $manager->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+        $manager->deleteLink(filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
         $this->displayUpdateLinkForm();
+        // If succes request => display homeLink and succesMessage
+        if($request !== null) {
+            $this->setSuccessMessage("Le lien est bien supprimé.");
+            $this->homeLinks();
+        }
+        // If error => display homeLinks and errorMessage
+        else {
+            $this->setErrorMessage("Le lien n'est pas supprimé.");
+            $this->homeLinks();
+        }
     }
+
 
 }

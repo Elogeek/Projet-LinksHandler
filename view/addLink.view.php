@@ -1,5 +1,15 @@
 
 <div id="addLinkDiv">
+
+    <!-- Display message soit display succes if succes soit display errorMessage if error lors de l'ajout du lien-->
+    <!-- <div class="successMessage">
+        <span><?= $link->getValidated() === 1 ? "setSuccessMessage" : "setErrorMessage"; ?></span>
+    </div>
+    <div class="errorMessage">
+        <span><?= $link->getValidated() === 1 ? "succes" : "error"; ?></span>
+    </div>
+    -->
+
     <div class="contLinkAdd">
         <form action="/index.php?controller=link&action=add" method="POST">
             <div>
@@ -20,4 +30,6 @@
             </div>
         </form>
     </div>
+
 </div>
+

@@ -14,7 +14,7 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function addLinks(Link &$l): bool {
+    public function addLink(Link &$l): bool {
 
         $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name, user_fk)VALUES(:href, :title, :target, :name, :userFk)");
 
@@ -89,7 +89,7 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function deleteLinks(Link $l): bool {
+    public function deleteLink(Link $l): bool {
 
         $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
         $request->bindValue("id", $l->getId());
