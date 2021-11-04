@@ -8,7 +8,7 @@ use Muffeen\UrlStatus\UrlStatus;
 class LinkController extends BaseController {
 
     /**
-     * Redirects into addLink page
+     * Redirects into addLink page (display form add a link)
      */
     public function displayAddLinkForm(): void {
        $this->render("addLink");
@@ -30,9 +30,9 @@ class LinkController extends BaseController {
     }
 
     /**
-     * Redirects into updateLink page
+     * Redirects into updateLink page (display form update a link)
      */
-    public function linkUpdate(): void {
+    public function displayUpdateLinkForm(): void {
         $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
         $this->render("updateLink", [
             "link" => $link
@@ -53,7 +53,6 @@ class LinkController extends BaseController {
         if($url_status->getStatusCode() === 200) {
             $link = new Link(null, $href, $title,"_blank", $name);
             (new LinkManager())->addLinks($link);
-            $this->addLinks();
         }
         else {
             // if not add link => redirect to homePageLink
@@ -65,7 +64,7 @@ class LinkController extends BaseController {
     /**
      * Update a link into the BDD
      */
-    public function update(int $linkId): void {
+    public function updateFormSubmit (int $linkId): void {
 
         $manager = new LinkManager();
         $link = $manager->searchLinks($linkId);
@@ -84,7 +83,7 @@ class LinkController extends BaseController {
                     ->setName($name);
 
                 (new LinkManager())->updateLink($link);
-                $this->linkUpdate();
+                $this->displayUpdateLinkForm();
             }
             else {
                 // If ok update => display homeLinks
@@ -100,12 +99,12 @@ class LinkController extends BaseController {
     /**
      *  Delete a link in the BDD
      */
-    public function delete(int $linkId): void {
+    public function deleteFormSubmit (int $linkId): void {
 
         $manager = new LinkManager();
         $manager->searchLinks($linkId);
         $manager->deleteLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
-        $this->linkUpdate();
+        $this->displayUpdateLinkForm();
     }
 
 }

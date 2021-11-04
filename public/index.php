@@ -63,7 +63,7 @@ function chooseLinksControllerAction(LinkController $controller) {
         case 'add':
             $controller->addLinkFormSubmit();
             break;
-
+        // Display form addLink
         case 'display-add-link-form':
             $controller->displayAddLinkForm();
             break;
@@ -71,13 +71,17 @@ function chooseLinksControllerAction(LinkController $controller) {
         // Update a link
         case 'update' :
             if (isset($_GET['id'])) {
-                $controller->update((int)$_GET['id']);
+                $controller->updateFormSubmit((int)$_GET['id']);
             }
+            break;
+        // Update a link
+        case 'display-update-link-form' :
+            $controller->displayUpdateLinkForm();
             break;
         //Delete a link
         case 'delete' :
             if (isset($_GET['id'])) {
-                $controller->delete((int)$_GET['id']);
+                $controller->deleteFormSubmit((int)$_GET['id']);
             }
             break;
         // home links

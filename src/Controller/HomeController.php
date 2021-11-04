@@ -19,12 +19,4 @@ class  HomeController extends BaseController {
             $this->render("homePage", [$links]);
         }
 
-        $links = [];
-        if($user !== null) {
-            $links = (new LinkManager())->getLinks($user);
-        }
-        $this->render("homePage", [$links]);
-    }
-
-
     }
