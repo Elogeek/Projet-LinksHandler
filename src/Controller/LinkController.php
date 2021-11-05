@@ -60,10 +60,8 @@ class LinkController extends BaseController {
             $href = filter_var($request['hrefLink'],FILTER_SANITIZE_STRING);
             $title = filter_var($request['title'],FILTER_SANITIZE_STRING);
             $name = filter_var($request['name'],FILTER_SANITIZE_STRING);
-
             // add user-fk in the BDD
             $userFk = (new Link())->getUserFk();
-
             $url_status = UrlStatus::get($href);
 
             // If success
@@ -137,12 +135,12 @@ class LinkController extends BaseController {
     public function deleteFormSubmit (int $linkId, array $request): void {
 
         $manager = new LinkManager();
-        $manager->searchLinks($linkId);
-        // If the form is submitted and the id is not empty
-        if($this->checkFormIsSubmitted() && !empty($request['id'])) {
+
+        // If the form is submitted and the id is not null
+        if($this->checkFormIsSubmitted() && $manager->searchLinks($linkId) !== null) {
             // So I remove the link
             $manager->deleteLink(filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
-            // If success request => and I display successMessage and the homeLinks
+            // If success request => so i display successMessage and the homeLinks
             $this->setSuccessMessage("Le lien est supprimé.");
             $this->homeLinks();
         }
