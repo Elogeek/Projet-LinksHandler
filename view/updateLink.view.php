@@ -16,11 +16,11 @@
             <label for="name">Nom :</label>
             <input type="text" name="name" id="name" required value="<?= $data['link']->getName() ?>">
         </div>
+        <div>
+            <input class="homeBtn" type="submit" id="buttonSubmit" value="Modifier le lien" name="submit">
+            <a class="homeBtn" href="/index.php">Retour</a>
+        </div>
 
-        <input type="submit" id="buttonSubmit" value="Modifier le lien" name="submit">
     </form>
-    <div class="homeBtn">
-        <a href="/index.php">Retour</a>
-    </div>
 
 </div>

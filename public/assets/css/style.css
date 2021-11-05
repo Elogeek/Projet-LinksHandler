@@ -12,7 +12,7 @@ html {
     font-size: 62.5%;
 }
 
-body {
+body{
     width: 100%;
     display: flex;
 }
@@ -61,7 +61,7 @@ header a:hover {
  h1 {
     margin: 3rem 0 0 0.8rem;
 }
- /* Design link update and delete a link */
+ /* Design icons update and delete a link */
  .optionLink a {
      display: flex;
      flex-direction: row;
@@ -79,7 +79,7 @@ header a:hover {
      color:crimson;
  }
 
-/* Design img of the link */
+/* Design img by default of the link */
 .linkImage {
     padding: 3rem;
     margin-bottom: 30px;
@@ -118,7 +118,7 @@ header a:hover {
     background-color: lightblue;
 }
 
-/* Desing pages: login,addLink,updateLink,deleteLink */
+/* Design pages: login,addLink,updateLink,deleteLink */
 form {
     display: flex;
     flex-direction: column;
@@ -130,12 +130,12 @@ form {
     padding: 1rem;
 }
 
-.contLinkAdd input, .userConnect input, #updateLink input {
+.contLinkAdd input, .userConnect input,#updateLink input {
     width: 50vh;
     height: 3.5rem;
 }
 
-#designDeleteLink input {
+#updateLink .homeBtn,#designDeleteLink input,#addLinkDiv .homeBtn {
     margin-top: 5rem;
     width: 22vh;
     height: 3.5rem;
