@@ -61,12 +61,10 @@ function chooseLinksControllerAction(LinkController $controller) {
         // Add a link
         case 'add':
             $controller->addLinkFormSubmit($_POST);
-            echo"cacao";
             break;
         // Display form addLink
         case 'display-add-link-form':
             $controller->displayAddLinkForm();
-            echo"cacaoHere";
             break;
 
         // Update a link

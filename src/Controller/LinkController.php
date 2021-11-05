@@ -66,12 +66,14 @@ class LinkController extends BaseController {
             }
             // If error
             else {
+                echo"cacao";
                 $this->setErrorMessage("Une erreur est survenue en ajoutant le lien");
             }
 
         }
         // If error
         else {
+            echo"cacaoooooo";
             $this->setErrorMessage("Tous les champs doivent être remplis !");
         }
     }

@@ -16,7 +16,10 @@ class LinkManager {
      */
     public function addLink(Link &$l): bool {
 
-        $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name, user_fk)VALUES(:href, :title, :target, :name, :userFk)");
+        $request = DB::getInstance()->prepare("
+            INSERT INTO prefix_link (href, title, target, name, user_fk)
+                VALUES(:href, :title, :target, :name, :userFk)
+        ");
 
         $request->bindValue(":href",$l->getHref());
         $request->bindValue(":title", $l->getTitle());
@@ -71,12 +74,16 @@ class LinkManager {
      * @return bool
      */
     public function updateLink(Link $l): bool {
-        $request = DB::getInstance()->prepare("UPDATE prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk WHERE id = :id");
-        $request->bindValue(":id", $l->getHref());
-        $request->bindValue(":href", $l->getTitle());
-        $request->bindValue(":title", $l->getTarget());
-        $request->bindValue(":target", $l->getName());
-        $request->bindValue(":name", $l->getId());
+        $request = DB::getInstance()->prepare("
+            UPDATE prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk 
+                WHERE id = :id
+       ");
+
+        $request->bindValue(":id", $l->getId());
+        $request->bindValue(":href", $l->getHref());
+        $request->bindValue(":title", $l->getTitle());
+        $request->bindValue(":target", $l->getTarget());
+        $request->bindValue(":name", $l->getName());
         $request->bindValue(":userFk",$l->getUserFk());
 
         return $request->execute();
