@@ -73,6 +73,7 @@ class LinkController extends BaseController {
                 $this->setSuccessMessage("Votre lien a bien été ajouté.");
                 // if success add link -> redirect to homePageLink
                 $this->homeLinks();
+                echo"cacaaaaaaaoo";
             }
             // If error
             else {
@@ -137,12 +138,16 @@ class LinkController extends BaseController {
 
         $manager = new LinkManager();
         $manager->searchLinks($linkId);
-        $manager->deleteLink(filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
-        // If success request => display homeLink and successMessage
+        // If the form is submitted and the id is not empty
+        if($this->checkFormIsSubmitted() && !empty($request['id'])) {
+            // So I remove the link
+            $manager->deleteLink(filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
+            // If success request => and I display successMessage and the homeLinks
             $this->setSuccessMessage("Le lien est supprimé.");
             $this->homeLinks();
+        }
+        $this->homeLinks();
 
     }
-
 
 }

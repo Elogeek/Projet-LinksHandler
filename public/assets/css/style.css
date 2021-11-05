@@ -141,6 +141,7 @@ form {
     height: 3.5rem;
     text-align: center;
     font-weight: bold;
+    padding: 0.5rem;
 }
 
 input[type=submit] {
