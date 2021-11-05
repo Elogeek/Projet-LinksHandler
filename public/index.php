@@ -83,6 +83,10 @@ function chooseLinksControllerAction(LinkController $controller) {
                 $controller->deleteFormSubmit((int)$_GET['id'],$_POST);
             }
             break;
+        // Display form delete a link
+        case 'display-delete-link-form' :
+            $controller->displayDeleteLinkForm();
+            break;
         // Display homeLinks by default
         default :
             $controller->homeLinks();

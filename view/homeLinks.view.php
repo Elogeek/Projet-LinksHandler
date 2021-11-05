@@ -3,10 +3,10 @@
     { ?>
         <div class="linkImage">
             <div class="optionLink">
-                <a id="linkUpdt" href="/index.php?controller=link&action=display-update-link-form&id=<?= $link->getId()  ?>">
+                <a id="linkUpdt" href="/index.php?controller=link&action=display-update-link-form&id=<?= $link->getId() ?>">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a id="linkDlt" href="/index.php?controller=link&action=delete&id">
+                <a id="linkDlt" href="/index.php?controller=link&action=display-delete-link-form&id=<?= $link->getId() ?>">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>

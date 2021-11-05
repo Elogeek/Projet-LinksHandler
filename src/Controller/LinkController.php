@@ -40,6 +40,16 @@ class LinkController extends BaseController {
     }
 
     /**
+     * Redirect to deleteLinkPage
+     */
+    public function displayDeleteLinkForm(): void {
+        $link = (new LinkManager())->searchLinks(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
+        $this->render("deleteLink", [
+            "link" => $link
+        ]);
+    }
+
+    /**
      * Add a link in the BDD
      */
     public function addLinkFormSubmit(array $request): void {
@@ -129,10 +139,8 @@ class LinkController extends BaseController {
         $manager->searchLinks($linkId);
         $manager->deleteLink(filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
         // If success request => display homeLink and successMessage
-        if($request !== null) {
             $this->setSuccessMessage("Le lien est supprimé.");
             $this->homeLinks();
-        }
 
     }
 

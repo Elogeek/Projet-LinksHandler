@@ -19,9 +19,6 @@
 
         <input type="submit" id="buttonSubmit" value="Modifier le lien" name="submit">
     </form>
-    <div class="deleteBtn">
-        <a href="/index.php?controller=link&action=delete&id=<?= $data['link']->getId() ?>">Supprimer le lien</a>
-    </div>
     <div class="homeBtn">
         <a href="/index.php">Retour</a>
     </div>

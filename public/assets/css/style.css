@@ -118,7 +118,7 @@ header a:hover {
     background-color: lightblue;
 }
 
-/* Desing page login, addLinkpage and updateLink */
+/* Desing pages: login,addLink,updateLink,deleteLink */
 form {
     display: flex;
     flex-direction: column;
@@ -126,13 +126,21 @@ form {
     align-items: center;
 }
 
-.contLinkAdd label, #loginDiv label,#updateLink label {
+.contLinkAdd label, #loginDiv label,#updateLink label,#designDeleteLink label {
     padding: 1rem;
 }
 
 .contLinkAdd input, .userConnect input, #updateLink input {
     width: 50vh;
     height: 3.5rem;
+}
+
+#designDeleteLink input {
+    margin-top: 5rem;
+    width: 22vh;
+    height: 3.5rem;
+    text-align: center;
+    font-weight: bold;
 }
 
 input[type=submit] {
@@ -142,7 +150,7 @@ input[type=submit] {
     width: 21vh;
 }
 
-#loginDiv, .contLinkAdd, #updateLink {
+#loginDiv, .contLinkAdd, #updateLink,#designDeleteLink {
     padding: 2rem;
     margin: 2rem;
     background-color: darkgray;
@@ -151,11 +159,11 @@ input[type=submit] {
     font-size: 2rem;
 }
 
-#loginDiv div, #addLinkDiv div,#updateLink div {
+#loginDiv div, #addLinkDiv div,#updateLink div,#designDeleteLink div {
     margin-top: 1.5rem;
 }
 
-#loginDiv a, #addLinkDiv a,#updateLink a {
+#loginDiv a, #addLinkDiv a,#updateLink a,#designDeleteLink a {
     color: white;
     margin-left:2rem;
     text-decoration-line: none;
