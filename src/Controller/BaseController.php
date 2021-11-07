@@ -13,13 +13,17 @@ class BaseController {
      * @param array $data
      */
     public function render(string $view, array $data = []): void {
+        // If $error is different from null then you display a message in $errorMessage
         if(self::$errorMessage !== null) {
             $error = self::$errorMessage;
+            // You must reset $error because otherwise the errors are always displayed
             self::$errorMessage = null;
         }
 
         if(self::$successMessage !== null) {
+            // If $success is different from null then you display a message in $successMessage
             $success = self::$successMessage;
+            // You must reset $success because otherwise the success are always displayed
             self::$successMessage = null;
         }
 
@@ -50,7 +54,8 @@ class BaseController {
      * @return bool
      */
     public function checkFormIsSubmitted(): bool {
+        // here $_Post === name['submit'] and 'submit === key (btn)
         return isset($_POST['submit']);
-        // here $_Post === name['submit'] and 'submit === key
     }
+
 }

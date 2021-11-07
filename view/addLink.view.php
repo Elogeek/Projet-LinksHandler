@@ -1,15 +1,6 @@
 
 <div id="addLinkDiv">
 
-    <!-- Displays the successMessage if success either displays the errorMessage if an error has occurred occurred while adding the link-->
-    <!-- <div class="successMessage">
-        <span><?= $link ? "setSuccessMessage" : "setErrorMessage"; ?></span>
-    </div>
-    <div class="errorMessage">
-        <span><?= $link ? "success" : "error"; ?></span>
-    </div>
-    -->
-
     <div class="contLinkAdd">
 
         <form action="/index.php?controller=link&action=add" method="POST">

@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $tittle ?></title>
+    <title>Links Handler</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://kit.fontawesome.com/e3ddf954eb.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
 <div id="container">
-    <!--if the user is connected then I display the disconnection button-->
+    <!--Display your error div with the message contained in $error-->
+    <?php
+    isset($error) ?> { ?>
+        <div class="errorMessage"><?= $data['error'] ?></div>
+    ?>
+    } ?>
+    else if(isset($success){ ?>
+         <!--Display your success div with the message contained in $success-->
+        <div class="successMessage"><?= $data['success'] ?></div>
+
+    }
+    ?>
+    <!-- If the user is connected then I display the disconnection button-->
      <?php
         if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
             <header>
@@ -48,7 +60,6 @@
 
         }
     ?>
-
 
     <!-- The html content from the ob_get_clean() -->
     <?= $html ?>

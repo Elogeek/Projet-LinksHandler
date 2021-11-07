@@ -80,7 +80,7 @@ function chooseLinksControllerAction(LinkController $controller) {
         //Delete a link
         case 'delete' :
             if (isset($_GET['id'])) {
-                $controller->deleteFormSubmit((int)$_GET['id'],$_POST);
+                $controller->deleteFormSubmit((int)$_GET['id']);
             }
             break;
         // Display form delete a link

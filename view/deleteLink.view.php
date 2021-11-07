@@ -1,7 +1,7 @@
 
 <div id="designDeleteLink">
 
-    <form action="/index.php?controller=link&action=delet&id=<?= $data['link']->getId() ?>" method="POST">
+    <form action="/index.php?controller=link&action=delete&id=<?= $data['link']->getId() ?>" method="POST">
         <div>
             <span>Voulez-vous supprimer le lien?</span>
         </div>

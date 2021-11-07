@@ -133,20 +133,19 @@ class LinkController extends BaseController {
     /**
      *  Delete a link in the BDD
      */
-    public function deleteFormSubmit (int $linkId, array $request): void {
-
+    public function deleteFormSubmit(int $linkId): void {
+        // First I will look for the id of my link
         $manager = new LinkManager();
+        $link = $manager->searchLinks($linkId);
 
-        // If the form is submitted and the id is not null
-        if($this->checkFormIsSubmitted() && $manager->searchLinks($linkId) !== null) {
+        // If the form is submitted and the id of my link is not null
+        if($this->checkFormIsSubmitted() && $link) {
             // So I remove the link
-            $manager->deleteLink(filter_var($request['id'], FILTER_SANITIZE_NUMBER_INT));
-            // If success request => so i display successMessage and the homeLinks
-            $this->setSuccessMessage("Le lien est supprimé.");
+            $manager->deleteLink($link);
+            // If success request => so i display the homeLinks
             $this->homeLinks();
         }
         $this->homeLinks();
-
     }
 
 }
