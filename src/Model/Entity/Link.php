@@ -11,6 +11,7 @@ class Link {
     private ?string $name;
     private ?int $userFk;
 
+
     /**
      * Link constructor.
      * @param int|null $id
@@ -18,6 +19,7 @@ class Link {
      * @param string|null $title
      * @param string|null $target
      * @param string|null $name
+     * @param int|null $userFk
      */
     public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null, int $userFk = null) {
         $this->id = $id;
@@ -26,7 +28,9 @@ class Link {
         $this->target = $target;
         $this->name = $name;
         $this->userFk = $userFk;
+
     }
+
 
     /**
      * Get id of Link

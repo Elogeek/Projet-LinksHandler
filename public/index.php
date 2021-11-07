@@ -7,11 +7,12 @@ use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
 use Elogeek\LinksHandler\Model\Entity\User;
 
+
 require '../vendor/autoload.php';
 
 session_start();
 
-if( (!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
+if ((!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
     (new UserController())->showLogin();
 }
 else {
@@ -26,8 +27,7 @@ else {
                 $controller = new LinkController();
                 if (isset($_GET['action'])) {
                     chooseLinksControllerAction($controller);
-                }
-                else {
+                } else {
                     $controller->homeLinks();
                 }
                 break;
@@ -44,8 +44,7 @@ else {
                 $controller = new LinkController();
                 $controller->homeLinks();
         }
-    }
-    else {
+    } else {
         $controller = new LinkController();
         $controller->homeLinks();
 
@@ -61,26 +60,44 @@ function chooseLinksControllerAction(LinkController $controller) {
     switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
         // Add a link
         case 'add':
-            $controller->add();
+            $controller->addLinkFormSubmit($_POST);
             break;
+        // Display form addLink
+        case 'display-add-link-form':
+            $controller->displayAddLinkForm();
+            break;
+
         // Update a link
         case 'update' :
-            if(isset($_GET['id'])) {
-                $controller->update((int)$_GET['id']);
+            if (isset($_GET['id'])) {
+                $controller->updateFormSubmit((int)$_GET['id'], $_POST);
             }
+            break;
+        // Display form update a link
+        case 'display-update-link-form' :
+            $controller->displayUpdateLinkForm();
             break;
         //Delete a link
         case 'delete' :
-            if(isset($_GET['id'])) {
-                $controller->delete((int)$_GET['id']);
+            if (isset($_GET['id'])) {
+                $controller->deleteFormSubmit((int)$_GET['id']);
             }
             break;
-        // home links
+        // Display form delete a link
+        case 'display-delete-link-form' :
+            $controller->displayDeleteLinkForm();
+            break;
+        // Display homeLinks by default
         default :
             $controller->homeLinks();
     }
 }
-
+// tODO REGISTRERCONTROLLER case 'display-form-registration-user' :
+//            $controller->displayFormRegistrationUser();
+//            break;
+//        case 'register':
+//            $controller->addGeekFormSubmit();
+//            break;
 
 /**
  * If connect / if disconnect a user
@@ -88,12 +105,9 @@ function chooseLinksControllerAction(LinkController $controller) {
  */
 function routeUser(UserController $controller) {
 
-    switch(filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
+    switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
         case 'logout' :
             $controller->logout();
-            break;
-        case 'register':
-            $controller->register();
             break;
         default :
             $controller->login();

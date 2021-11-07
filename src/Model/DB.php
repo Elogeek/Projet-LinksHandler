@@ -42,7 +42,6 @@ class DB {
      * @param $data
      * @return string
      */
-
     public static function secureData($data): string {
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -64,7 +63,7 @@ class DB {
 
     /**
      * Check if password is correct
-     * Check if the password contains uppercase, lowercases, numbers at least 5 characters.
+     * Check if the password contains uppercase, lowercase, numbers at least 5 characters.
      * @param $psswd
      * @return bool
      */

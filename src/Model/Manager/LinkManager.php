@@ -6,6 +6,7 @@ use Elogeek\LinksHandler\Model\DB;
 use Elogeek\LinksHandler\Model\Entity\Link;
 use Elogeek\LinksHandler\Model\Entity\User;
 
+
 class LinkManager {
 
     /**
@@ -13,9 +14,12 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function addLinks(Link &$l): bool {
+    public function addLink(Link &$l): bool {
 
-        $request = DB::getInstance()->prepare("INSERT INTO prefix_link(href, title, target, name, user_fk)VALUES(:href, :title, :target, :name, :userFk)");
+        $request = DB::getInstance()->prepare("
+            INSERT INTO prefix_link (href, title, target, name, user_fk)
+                VALUES(:href, :title, :target, :name, :userFk)
+        ");
 
         $request->bindValue(":href",$l->getHref());
         $request->bindValue(":title", $l->getTitle());
@@ -55,7 +59,7 @@ class LinkManager {
      */
     public function searchLinks($id): ?Link {
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE id = :id");
-        $request->bindValue("id", $id);
+        $request->bindValue(":id", $id);
         $link = null;
 
         if($request->execute() && $result = $request->fetch()) {
@@ -70,14 +74,17 @@ class LinkManager {
      * @return bool
      */
     public function updateLink(Link $l): bool {
+        $request = DB::getInstance()->prepare("
+            UPDATE prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk 
+                WHERE id = :id
+       ");
 
-        $request = DB::getInstance()->prepare("UPDATE  prefix_link SET href = :href, title = :title, target = :target, name = :name, user_fk = :userFk WHERE id = :id");
-        $request->bindValue("id", $l->getHref());
-        $request->bindValue("href", $l->getTitle());
-        $request->bindValue("title", $l->getTarget());
-        $request->bindValue("target", $l->getName());
-        $request->bindValue("name", $l->getId());
-        $request->bindValue("user_fk",$l->getUserFk());
+        $request->bindValue(":id", $l->getId());
+        $request->bindValue(":href", $l->getHref());
+        $request->bindValue(":title", $l->getTitle());
+        $request->bindValue(":target", $l->getTarget());
+        $request->bindValue(":name", $l->getName());
+        $request->bindValue(":userFk",$l->getUserFk());
 
         return $request->execute();
 
@@ -88,10 +95,10 @@ class LinkManager {
      * @param Link $l
      * @return bool
      */
-    public function deleteLinks(Link $l): bool {
+    public function deleteLink(Link $l): bool {
 
         $request = DB::getInstance()->prepare("DELETE FROM prefix_link WHERE id = :id");
-        $request->bindValue("id", $l->getId());
+        $request->bindValue(":id", $l->getId());
         return $request->execute();
     }
 

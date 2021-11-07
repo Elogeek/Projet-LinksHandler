@@ -7,24 +7,10 @@ use Elogeek\LinksHandler\Model\Manager\UserManager;
 class UserController extends BaseController {
 
     /**
-     * Redirect into login page
+     * Redirects into login page
      */
-    public function showLogin() {
+    public function showLogin(): void {
         $this->render("login");
-    }
-
-    /**
-     * Redirect to loginPage
-     */
-    public function register() {
-        $this->render("login");
-    }
-
-    /**
-     * Redirect to contactPage
-     */
-    public function contact() {
-        $this->render("contact");
     }
 
     /**
@@ -49,7 +35,7 @@ class UserController extends BaseController {
     /**
      * Disconnect an user
      */
-    public function logout() {
+    public function logout(): void {
         // I'm replacing the $ _SESSION array with an array that contains nothing.
         $_SESSION = [];
         session_unset();

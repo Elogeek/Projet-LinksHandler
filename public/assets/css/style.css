@@ -12,12 +12,12 @@ html {
     font-size: 62.5%;
 }
 
-body {
+body{
     width: 100%;
     display: flex;
 }
 
-/* Design Header */
+/* Design Header (menu of the site) */
 header {
     padding: 1.2rem;
     display: flex;
@@ -41,8 +41,8 @@ header a:hover {
     color: crimson;
 }
 
- header a {
-   font-size: 1.8rem;
+header a {
+    font-size: 1.8rem;
     color: orchid;
     text-decoration: none;
 }
@@ -58,22 +58,29 @@ header a:hover {
     text-align: center;
 }
 
- h1 {
+h1 {
     margin: 3rem 0 0 0.8rem;
 }
 
- .optionLink a {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: nowrap;
-     color: orchid;
-     font-size:2rem;
- }
+/* Design icons update and delete a link */
+.optionLink a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+}
 
- .optionLink a:hover{
-     color:crimson;
- }
+#linkDlt,#linkUpdt {
+    padding: 0.5rem;
+    font-size:2rem;
+    color: orchid;
+}
 
+.optionLink a:hover {
+    color:crimson;
+}
+
+/* Design img by default of the link */
 .linkImage {
     padding: 3rem;
     margin-bottom: 30px;
@@ -112,7 +119,7 @@ header a:hover {
     background-color: lightblue;
 }
 
-/* Desing page login, addLinkpage and updateLink */
+/* Design pages: login,addLink,updateLink,deleteLink */
 form {
     display: flex;
     flex-direction: column;
@@ -120,13 +127,28 @@ form {
     align-items: center;
 }
 
-.contLinkAdd label, #loginContainer label, #containerRegister label {
+.contLinkAdd label, #loginDiv label,#updateLink label,#designDeleteLink label {
     padding: 1rem;
 }
 
-.contLinkAdd input, .userConnect input {
-    width: 50vh;
+.contLinkAdd input, .userConnect input,#updateLink input {
+    width: 60vh;
     height: 3.5rem;
+}
+
+/* Design link homeBtn (register and back) */
+#loginContainer .homeBtn {
+    text-align: center;
+    font-weight: bold;
+}
+
+#updateLink .homeBtn,#designDeleteLink input,#addLinkDiv .homeBtn {
+    margin-top: 5rem;
+    width: 22vh;
+    height: 3.5rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
 }
 
 input[type=submit] {
@@ -136,7 +158,7 @@ input[type=submit] {
     width: 21vh;
 }
 
-#loginContainer,#containerRegister .contLinkAdd {
+#loginContainer, .contLinkAdd, #updateLink,#designDeleteLink {
     padding: 2rem;
     margin: 2rem;
     background-color: darkgray;
@@ -145,13 +167,37 @@ input[type=submit] {
     font-size: 2rem;
 }
 
-#loginContainer div,#containerRegister div, #addLinkDiv div {
+#loginContainer div, #addLinkDiv div,#updateLink div,#designDeleteLink div {
     margin-top: 1.5rem;
 }
 
-#loginContainer a, #containerRegister a, #addLinkDiv a {
+#loginContainer a, #addLinkDiv a,#updateLink a,#designDeleteLink a {
     color: white;
     margin-left:2rem;
+    text-decoration-line: none;
+}
+
+/**
+* Display message success
+*/
+.successMessage, .errorMessage {
+    font-weight: bold;
+    padding: 1rem;
+    color: white;
+    height: 8rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.successMessage {
+    background-color: lime;
+}
+
+/**
+* Display message error
+*/
+.errorMessage {
+    background-color: crimson;
 }
 
 /**
