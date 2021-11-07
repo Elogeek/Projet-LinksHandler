@@ -60,30 +60,31 @@ class LinkController extends BaseController {
             $href = filter_var($request['hrefLink'],FILTER_SANITIZE_STRING);
             $title = filter_var($request['title'],FILTER_SANITIZE_STRING);
             $name = filter_var($request['name'],FILTER_SANITIZE_STRING);
-            // add user-fk in the BDD
-            $userFk = (new Link())->getUserFk();
             $url_status = UrlStatus::get($href);
 
             // If success
             if($url_status->getStatusCode() === 200) {
-                $link = new Link(null, $href, $title,"_blank", $name,$userFk);
+                // Search user connect via the variable $_SESSION['user']
+                $user = $_SESSION['user'];
+                $link = new Link(null, $href, $title,"_blank", $name, $user->getId());
                 (new LinkManager())->addLink($link);
                 $this->setSuccessMessage("Votre lien a bien été ajouté.");
                 // if success add link -> redirect to homePageLink
                 $this->homeLinks();
-                echo"cacaaaaaaaoo";
             }
             // If error
             else {
-                echo"cacao";
+
                 $this->setErrorMessage("Une erreur est survenue en ajoutant le lien");
+               // $this->homeLinks();
             }
 
         }
         // If error
         else {
-            echo"cacaoooooo";
+
             $this->setErrorMessage("Tous les champs doivent être remplis !");
+           // $this->homeLinks();
         }
     }
 

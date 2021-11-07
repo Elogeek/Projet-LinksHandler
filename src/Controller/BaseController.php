@@ -51,5 +51,6 @@ class BaseController {
      */
     public function checkFormIsSubmitted(): bool {
         return isset($_POST['submit']);
+        // here $_Post === name['submit'] and 'submit === key
     }
 }
