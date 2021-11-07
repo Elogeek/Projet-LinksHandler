@@ -13,14 +13,14 @@
 <div id="container">
     <!--Display your error div with the message contained in $error-->
     <?php
-    isset($error) ?> { ?>
+    if(isset($error)) { ?>
         <div class="errorMessage"><?= $data['error'] ?></div>
-    ?>
-    } ?>
-    else if(isset($success){ ?>
+    <?php
+    }
+    else if(isset($success)){ ?>
          <!--Display your success div with the message contained in $success-->
         <div class="successMessage"><?= $data['success'] ?></div>
-
+    <?php
     }
     ?>
     <!-- If the user is connected then I display the disconnection button-->
