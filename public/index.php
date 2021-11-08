@@ -139,3 +139,16 @@ function routeRegister(RegisterController $controller) {
                 $controller->displayRegisterUserForm();
         }
     }
+
+    function routeContact(ContactController $controller) {
+    switch (filter_var($_GET['action'],FILTER_SANITIZE_STRING)) {
+        case'display-add-contact-form':
+            $controller->displayAddContactForm();
+                break;
+        case 'contact':
+            $controller->contact($_POST);
+            break;
+        default :
+            $controller->contact($_POST) ;
+    }
+    }

@@ -33,6 +33,12 @@
                     Ajouter un lien
                 </a>
             </div>
+            <div class="newLink">
+                <a href="/index.php?controller=contact&action=display-add-contact-form">
+                    <i class="fas fa-phone"></i>
+                    Nous contacter
+                </a>
+            </div>
             <div class="account" id="btnDisconnect">
                 <a href="/index.php?controller=user&action=logout" title="Déconnection">
                     <i class="fas fa-user-slash"></i>

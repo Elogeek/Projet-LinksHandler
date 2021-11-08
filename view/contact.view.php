@@ -1,7 +1,7 @@
 
 <h1>Contacter le support technique</h1>
 
-    <form action="/index.php?controller=user&action=contact" method="post">
+    <form action="/index.php?controller=contact&action=contact" method="post">
         <div>
             <label for="mail">Email</label>
             <input type="email" id="mail" name="mail" required>
