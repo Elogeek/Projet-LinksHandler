@@ -39,6 +39,14 @@ else {
                     routeUser($controller);
                     break;
                 }
+            // Action registers a user
+            case 'register':
+                $controller->registerGeekFormSubmit($_POST);
+                break;
+            // Display the registration form
+            case 'display-form-registration-user':
+                $controller->displayFormRegistrationUser();
+                break;
 
             default:
                 $controller = new LinkController();
@@ -92,12 +100,7 @@ function chooseLinksControllerAction(LinkController $controller) {
             $controller->homeLinks();
     }
 }
-// tODO REGISTRERCONTROLLER case 'display-form-registration-user' :
-//            $controller->displayFormRegistrationUser();
-//            break;
-//        case 'register':
-//            $controller->addGeekFormSubmit();
-//            break;
+
 
 /**
  * If connect / if disconnect a user
@@ -115,3 +118,4 @@ function routeUser(UserController $controller) {
     }
 
 }
+

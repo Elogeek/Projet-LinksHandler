@@ -23,8 +23,8 @@ else {
     echo "Ouuups !\n";
     die;
 }
-/*
-if($linkManager->addLinks($link)) {
+
+if($linkManager->addLink($link)) {
     echo "lien est bien ajoutée en BDD !\n";
 }
 
@@ -52,11 +52,10 @@ else {
 }
 
 // Delete a link
-if($linkManager->deleteLinks($linkManager->searchLinks(4))) {
+if($linkManager->deleteLink($linkManager->searchLinks(4))) {
    echo " le dev est un génie\n";
 }
 else {
     echo "oh ma vache\n";
     die;
 }
-*/
