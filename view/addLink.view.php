@@ -20,6 +20,7 @@
                 <input type="text" name="name" id="name" required>
             </div>
 
+
             <div>
                 <input class="homeBtn" type="submit"  value="Ajouter le lien" name="submit">
                 <a class="homeBtn" href="/index.php">Retour</a>
@@ -29,5 +30,5 @@
 
     </div>
 
-</div>
 
+</div>

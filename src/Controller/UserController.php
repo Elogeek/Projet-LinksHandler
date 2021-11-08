@@ -2,6 +2,7 @@
 
 namespace Elogeek\LinksHandler\Controller;
 
+use Elogeek\LinksHandler\Model\DB;
 use Elogeek\LinksHandler\Model\Manager\UserManager;
 
 class UserController extends BaseController {
@@ -21,13 +22,12 @@ class UserController extends BaseController {
         $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
         $user = (new UserManager())->searchMail($mail);
-        if($user !== null && password_verify($pass, $user->getPass())) {
+        if ($user !== null && password_verify($pass, $user->getPass())) {
 
             $_SESSION['id'] = true;
             $_SESSION['user'] = $user;
             header("Location: /index.php");
-        }
-        else {
+        } else {
             header("Location: /index.php");
         }
     }

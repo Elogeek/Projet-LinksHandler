@@ -39,6 +39,14 @@ else {
                     routeUser($controller);
                     break;
                 }
+            // Action registers a user
+            case 'register':
+                $controller->registerGeekFormSubmit($_POST);
+                break;
+            // Display the registration form
+            case 'display-form-registration-user':
+                $controller->displayFormRegistrationUser();
+                break;
 
             default:
                 $controller = new LinkController();
@@ -110,3 +118,4 @@ function routeUser(UserController $controller) {
     }
 
 }
+

@@ -15,7 +15,11 @@
     "minimum-stability": "dev",
     "require": {
       "ext-pdo": "*",
-        "muffeen/url-status": "^0.2.0"
+        "muffeen/url-status": "^0.2.0",
+        "symfony/mailer": "^5.3",
+        "symfony/twig-bridge": "^5.3",
+        "symfony/sendgrid-mailer": "^5.3",
+        "chartisan/php": "dev-master"
     }
     ,
     "require-dev": {

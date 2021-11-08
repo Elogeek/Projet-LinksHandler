@@ -41,8 +41,8 @@ header a:hover {
     color: crimson;
 }
 
- header a {
-   font-size: 1.8rem;
+header a {
+    font-size: 1.8rem;
     color: orchid;
     text-decoration: none;
 }
@@ -58,9 +58,30 @@ header a:hover {
     text-align: center;
 }
 
- h1 {
+h1 {
     margin: 3rem 0 0 0.8rem;
 }
+
+
+/* Design icons update and delete a link */
+.optionLink a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+}
+
+#linkDlt,#linkUpdt {
+    padding: 0.5rem;
+    font-size:2rem;
+    color: orchid;
+}
+
+.optionLink a:hover {
+    color:crimson;
+}
+
+
  /* Design icons update and delete a link */
  .optionLink a {
      display: flex;
@@ -132,7 +153,25 @@ form {
 
 .contLinkAdd input, .userConnect input,#updateLink input {
     width: 60vh;
+
     height: 3.5rem;
+}
+
+/* Design link homeBtn (register and back) */
+#loginContainer .homeBtn {
+    text-align: center;
+    font-weight: bold;
+}
+
+#updateLink .homeBtn,#designDeleteLink input,#addLinkDiv .homeBtn {
+    margin-top: 5rem;
+    width: 22vh;
+
+
+    height: 3.5rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
 }
 
 #updateLink .homeBtn,#designDeleteLink input,#addLinkDiv .homeBtn {
@@ -151,7 +190,10 @@ input[type=submit] {
     width: 21vh;
 }
 
-#loginDiv, .contLinkAdd, #updateLink,#designDeleteLink {
+
+#loginContainer, .contLinkAdd, #updateLink,#designDeleteLink {
+
+
     padding: 2rem;
     margin: 2rem;
     background-color: darkgray;
@@ -160,19 +202,22 @@ input[type=submit] {
     font-size: 2rem;
 }
 
-#loginDiv div, #addLinkDiv div,#updateLink div,#designDeleteLink div {
+
+#loginContainer div, #addLinkDiv div,#updateLink div,#designDeleteLink div {
     margin-top: 1.5rem;
 }
 
-#loginDiv a, #addLinkDiv a,#updateLink a,#designDeleteLink a {
+#loginContainer a, #addLinkDiv a,#updateLink a,#designDeleteLink a {
+
     color: white;
     margin-left:2rem;
     text-decoration-line: none;
 }
 
 /**
-* Display message succes
-*/
+
+* Display message success
+
 .successMessage, .errorMessage {
     font-weight: bold;
     padding: 1rem;
@@ -182,6 +227,7 @@ input[type=submit] {
     font-size: 1.5rem;
 
 }
+
 .successMessage {
     background-color: lime;
 }

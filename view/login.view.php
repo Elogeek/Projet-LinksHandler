@@ -1,5 +1,6 @@
 <div class="userConnect">
-    <div id="loginDiv">
+
+    <div id="loginContainer">
         <form action="/index.php?controller=user&action=login" method="POST">
             <div>
                 <label for="mail">Adresse mail :</label>
@@ -12,8 +13,10 @@
 
             <input type="submit" class="buttonSubmit" value="Se connecter" name="login-submit">
             <div class ="homeBtn">
+                <a href="/index.php?controller=user&action=display-form-registration-user">Pas encore inscrit?</a>
                 <a href="/index.php">Retour</a>
             </div>
         </form>
     </div>
+
 </div>

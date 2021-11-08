@@ -12,7 +12,9 @@ ini_set('display_errors',1);
 $linkManager = new LinkManager();
 $l = new Link(null, "https://discord.com/channels/764389321947086858/875310065622597652","lien", "_blank","lien",7);
 
+
 if($linkManager->addLink($l)) {
+
     echo "lien est bien ajoutée en BDD !\n";
 }
 
@@ -41,7 +43,9 @@ else {
 }
 
 // Delete a link
-if($linkManager->deleteLink($linkManager->searchLinks(29))) {
+
+if($linkManager->deleteLink($linkManager->searchLinks(4))) {
+
    echo " le dev est un génie\n";
 }
 else {
