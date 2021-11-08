@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 
 use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
+use Elogeek\LinksHandler\Controller\RegisterController;
 use Elogeek\LinksHandler\Model\Entity\User;
 
 
@@ -39,14 +40,14 @@ else {
                     routeUser($controller);
                     break;
                 }
+
             // Action registers a user
             case 'register':
-                $controller->registerGeekFormSubmit($_POST);
-                break;
-            // Display the registration form
-            case 'display-form-registration-user':
-                $controller->displayFormRegistrationUser();
-                break;
+                if (isset($_GET['action'])) {
+                    $controller = new RegisterController();
+                    routeRegister($controller);
+                    break;
+                }
 
             default:
                 $controller = new LinkController();
@@ -119,3 +120,22 @@ function routeUser(UserController $controller) {
 
 }
 
+
+/**
+ * Router of the RegisterController
+ * @param RegisterController $controller
+ */
+function routeRegister(RegisterController $controller) {
+        switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
+            // Action register an user
+            case 'register':
+                  $controller->registerUserFormSubmit($_POST);
+                    break;
+            // Display the registration form
+            case 'display-register-user-form':
+                $controller->displayRegisterUserForm();
+                break;
+            default :
+                $controller->displayRegisterUserForm();
+        }
+    }
