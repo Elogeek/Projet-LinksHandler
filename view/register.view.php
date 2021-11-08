@@ -1,6 +1,6 @@
 <div id="containerRegister">
 
-    <form action="/index.php?controller=user&action=register" method="POST">
+    <form action="/index.php?controller=register&action=register" method="POST">
         <div>
             <label for="firstname">Prénom :</label>
             <input type="text" id="firstname" name="firstname" required>

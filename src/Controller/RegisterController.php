@@ -1,16 +1,28 @@
 <?php
 namespace Elogeek\LinksHandler\Controller;
 
-use Elogeek\LinksHandler\Controller\BaseController;
 use Elogeek\LinksHandler\Model\DB;
-use Elogeek\LinksHandler\Model\Entity\Role;
+
 use Elogeek\LinksHandler\Model\Entity\User;
 use Elogeek\LinksHandler\Model\Manager\RoleManager;
 use Elogeek\LinksHandler\Model\Manager\UserManager;
 
+
 class RegisterController extends BaseController {
 
-    public function register(array $request): void {
+    /**
+     *  Show  the registration form
+     */
+    public function displayRegisterUserForm(): void {
+         $this->render("register");
+    }
+
+    /**
+     *  Add a user in the BDD
+     * @param array $request
+     */
+    public function registerUserFormSubmit(array $request): void {
+
        // Checking if form was submit and check that all required fields are defined.
        if($this->checkFormIsSubmitted() && isset($request['firstname'],$request['name'],$request['mail'],$request['pass'],$request['passRepeat'])) {
 
@@ -51,9 +63,23 @@ class RegisterController extends BaseController {
                $user->setPass($pass);
                $user->setRole($this->$r->getById(2));
 
-           // Sauvergarde du new user
-
-            // redirect to homeLinks
+               // Save new user
+               $userM->addUser($user);
+               $this->setSuccessMessage("Votre compte a bien été créé.");
+               // redirect to homeLinks
+               $this->render('homeLinks');
+           }
+           else {
+               $this->render('homeLinks');
+               // if error
+               $this->setErrorMessage("Une erreur est survenue lors de la création de votre compte.");
+           }
        }
+       else {
+           $this->render('homeLinks');
+           $this->setErrorMessage('Tous les champs doivent être remplis');
+       }
+
     }
+
 }
