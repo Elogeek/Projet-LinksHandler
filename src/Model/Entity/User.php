@@ -10,6 +10,7 @@ class User {
     private ?string $pass;
     private ?int $role;
 
+
     /**
      * Link constructor.
      * @param int|null $id
