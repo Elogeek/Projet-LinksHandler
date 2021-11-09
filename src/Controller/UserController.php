@@ -139,29 +139,10 @@ class UserController extends BaseController {
             $message = DB::secureData($_POST['message']);
             $message = wordwrap($message, 70, "\r\n");
 
-            // Create the Transport
-            $transport = (new Swift_SmtpTransport(EMAIL_HOST,EMAIL_PORT))
-                ->setUsername(EMAIL_USERNAME)
-                ->setPassword(EMAIL_PASSWORD)
-                ->setEncryption(EMAIL_ENCRYPTION) //for gmail
-            ;
-
-            // Create the Mailer using your created Transport
-                    $mailer = new Swift_Mailer($transport);
-
-            // Create a message
-                    // Give the message a subject
-                    $message = (new Swift_Message($subject))
-                        // The sender of the email
-                        ->setFrom([$email])
-                        // The email support
-                        ->setTo(EMAIL_USERNAME)
-                        // The message here
-                        ->setBody($message,'text/html')
-                    ;
+            //
 
             // Send a mail
-            $result = $mailer->send($message);
+
 
           header("Location:homeLinks");
           $this->setSuccessMessage("Votre email est bien envoyé au support technique.");

@@ -16,7 +16,7 @@
     "require": {
       "ext-pdo": "*",
         "muffeen/url-status": "^0.2.0",
-        "swiftmailer/swiftmailer": "^6.0"
+        "phpmailer/phpmailer": "dev-master"
     }
     ,
     "require-dev": {
