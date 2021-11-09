@@ -43,10 +43,11 @@ class BaseController {
         self::$successMessage = $message;
     }
 
-    /**
-     * Add an error message to be displayed.
-     * @param string $message
-     */
+
+    * Add an error message to be displayed.
+    * @param string $message
+    */
+
     public function setErrorMessage(string $message): void {
         self::$errorMessage = $message;
     }

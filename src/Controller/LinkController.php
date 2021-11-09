@@ -11,7 +11,9 @@ class LinkController extends BaseController {
      * Redirects into addLink page (display form add a link)
      */
     public function displayAddLinkForm(): void {
+
         $this->render("addLink");
+
     }
 
     /**
@@ -76,7 +78,9 @@ class LinkController extends BaseController {
             else {
 
                 $this->setErrorMessage("Une erreur est survenue en ajoutant le lien");
+
                 // $this->homeLinks();
+
             }
 
         }
@@ -84,7 +88,9 @@ class LinkController extends BaseController {
         else {
 
             $this->setErrorMessage("Tous les champs doivent être remplis !");
+
             // $this->homeLinks();
+
         }
     }
 
