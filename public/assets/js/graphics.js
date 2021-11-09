@@ -1,4 +1,4 @@
-import '/node_modules/chart.js/dist/chart.js';
+//import 'node_modules/chart.js/dist/chart.js';
 
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {

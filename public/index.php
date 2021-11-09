@@ -5,19 +5,22 @@ ini_set('display_errors', 1);
 
 use Elogeek\LinksHandler\Controller\LinkController;
 use Elogeek\LinksHandler\Controller\UserController;
-use Elogeek\LinksHandler\Controller\RegisterController;
 use Elogeek\LinksHandler\Model\Entity\User;
+
 
 
 require '../vendor/autoload.php';
 
 session_start();
 
-if ((!isset($_SESSION['id']) || $_SESSION['id'] !== true) && !isset($_POST['login-submit'])) {
+if (
+    (!isset($_SESSION['id']) || $_SESSION['id'] !== true)
+    &&
+    (!isset($_POST['login-submit']) && $_GET['action'] !=='display-register-user-form')
+){
     (new UserController())->showLogin();
 }
 else {
-    $user = $_SESSION['user'];
 
     if (isset($_GET['controller'])) {
         $controller = filter_var($_GET['controller'], FILTER_SANITIZE_STRING);
@@ -33,19 +36,11 @@ else {
                 }
                 break;
 
-            // Connect or disconnect a user via la fct routeUser
+            // Switch to the action of a user via the routeUser function
             case 'user':
                 if (isset($_GET['action'])) {
                     $controller = new UserController();
                     routeUser($controller);
-                    break;
-                }
-
-            // Action registers a user
-            case 'register':
-                if (isset($_GET['action'])) {
-                    $controller = new RegisterController();
-                    routeRegister($controller);
                     break;
                 }
 
@@ -113,6 +108,23 @@ function routeUser(UserController $controller) {
         case 'logout' :
             $controller->logout();
             break;
+        // Action register an user
+        case 'register':
+            $controller->registerUserFormSubmit($_POST);
+            break;
+        // Display the registration form
+        case 'display-register-user-form':
+            $controller->displayRegisterUserForm();
+            break;
+        /*
+        case 'contact':
+            $controller->contact($_POST);
+            break;
+        // Display the contact form
+        case 'display-add-contact-form':
+            $controller->displayAddContactForm();
+            break;
+       */
         default :
             $controller->login();
 
@@ -121,34 +133,3 @@ function routeUser(UserController $controller) {
 }
 
 
-/**
- * Router of the RegisterController
- * @param RegisterController $controller
- */
-function routeRegister(RegisterController $controller) {
-        switch (filter_var($_GET['action'], FILTER_SANITIZE_STRING)) {
-            // Action register an user
-            case 'register':
-                  $controller->registerUserFormSubmit($_POST);
-                    break;
-            // Display the registration form
-            case 'display-register-user-form':
-                $controller->displayRegisterUserForm();
-                break;
-            default :
-                break;
-        }
-    }
-
-    function routeContact(ContactController $controller) {
-        switch (filter_var($_GET['action'],FILTER_SANITIZE_STRING)) {
-            case'display-add-contact-form':
-                $controller->displayAddContactForm();
-                    break;
-            case 'contact':
-                $controller->contact($_POST);
-                break;
-            default:
-                break;
-        }
-    }

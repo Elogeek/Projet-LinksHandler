@@ -13,7 +13,7 @@
 
             <input type="submit" class="buttonSubmit" value="Se connecter" name="login-submit">
             <div class ="homeBtn">
-                <a href="/index.php?controller=register&action=display-register-user-form">Pas encore inscrit?</a>
+                <a href="/index.php?controller=user&action=display-register-user-form">Pas encore inscrit?</a>
                 <a href="/index.php">Retour</a>
             </div>
         </form>

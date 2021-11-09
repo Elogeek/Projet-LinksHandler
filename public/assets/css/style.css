@@ -119,7 +119,7 @@ h1 {
     background-color: lightblue;
 }
 
-/* Design pages: login,addLink,updateLink,deleteLink */
+/* Design forms in the pages: login,addLink,updateLink,deleteLink,register and contact */
 form {
     display: flex;
     flex-direction: column;
@@ -127,17 +127,17 @@ form {
     align-items: center;
 }
 
-.contLinkAdd label, #loginDiv label,#updateLink label,#designDeleteLink label {
+.contLinkAdd label, #loginContainer label,#updateLink label,#designDeleteLink label, #containerRegister label {
     padding: 1rem;
 }
 
-.contLinkAdd input, .userConnect input,#updateLink input {
+.contLinkAdd input, .userConnect input,#updateLink input, #containerRegister input,#divRegister input {
     width: 60vh;
     height: 3.5rem;
 }
 
 /* Design link homeBtn (register and back) */
-#loginContainer .homeBtn {
+#loginContainer .homeBtn, #containerRegister .homeBtn {
     text-align: center;
     font-weight: bold;
 }
@@ -158,7 +158,7 @@ input[type=submit] {
     width: 21vh;
 }
 
-#loginContainer, .contLinkAdd, #updateLink,#designDeleteLink {
+#loginContainer, .contLinkAdd, #updateLink,#designDeleteLink,#containerRegister {
     padding: 2rem;
     margin: 2rem;
     background-color: darkgray;
@@ -167,14 +167,25 @@ input[type=submit] {
     font-size: 2rem;
 }
 
-#loginContainer div, #addLinkDiv div,#updateLink div,#designDeleteLink div {
+#loginContainer div, #addLinkDiv div,#updateLink div,#designDeleteLink div, #containerRegister div {
     margin-top: 1.5rem;
 }
 
-#loginContainer a, #addLinkDiv a,#updateLink a,#designDeleteLink a {
+#loginContainer a, #addLinkDiv a,#updateLink a,#designDeleteLink a, #containerRegister a {
     color: white;
     margin-left:2rem;
     text-decoration-line: none;
+}
+
+/* Design help */
+#help {
+    color: white;
+    background-color: darkgray;
+    padding: 1.5rem;
+}
+
+#help:hover {
+    font-size: 3rem;
 }
 
 /**
