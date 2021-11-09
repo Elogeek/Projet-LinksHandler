@@ -69,20 +69,20 @@ class UserController extends BaseController {
             $pass = DB::secureData($request['pass']);
             $passwordConfirm = DB::secureData($request['passRepeat']);
 
-            //Checking all user inputs
+            // Check all the data that the user has given
             $userM = new UserManager();
 
-            // Check if the email address is not taken
+            // If the email address is not taken
             if($this->$userM->searchMail($mail) !== null) {
                 $error = true;
                 $this->setErrorMessage('Oups, cette adresse email est déjà prise');
             }
-            // Check if the email address is valid
+            // If the email address is valid
             if(!filter_var($mail,FILTER_VALIDATE_EMAIL)) {
                 $error =true;
                 $this->setErrorMessage("Le format de l'adresse email n'est pas correct");
             }
-            // Check if the two passwords are identical
+            // If the two passwords are identical
             if($pass !== $passwordConfirm || !DB::checkPassword($pass)){
                 $error = true;
                 $this->setErrorMessage("Les mots de passe ne correspondent pas ou ne respectent pas le critère de sécurité");
