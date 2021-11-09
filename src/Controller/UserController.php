@@ -139,7 +139,7 @@ class UserController extends BaseController {
             $message = DB::secureData($_POST['message']);
             $message = wordwrap($message, 70, "\r\n");
 
-            //
+
 
             // Send a mail
 
