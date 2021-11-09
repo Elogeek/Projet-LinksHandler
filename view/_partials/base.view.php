@@ -118,6 +118,6 @@
     <?= $html ?>
 
 </div>
-
+<script src="public/assets/js/graphics.js" type="module"></script>
 </body>
 </html>

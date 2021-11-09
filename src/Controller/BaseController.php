@@ -31,6 +31,7 @@ class BaseController {
         require __DIR__ . "/../../view/" . $view . ".view.php";
         $html = ob_get_clean();
         require __DIR__ . "/../../view/_partials/base.view.php";
+
     }
 
     /**
