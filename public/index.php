@@ -99,7 +99,7 @@ function chooseLinksControllerAction(LinkController $controller) {
 
 
 /**
- * If connect / if disconnect a user
+ * Switch to the action of a user via the routeUser function
  * @param UserController $controller
  */
 function routeUser(UserController $controller) {
