@@ -16,9 +16,7 @@
     "require": {
       "ext-pdo": "*",
         "muffeen/url-status": "^0.2.0",
-        "symfony/mailer": "^5.3",
-        "symfony/twig-bridge": "^5.3",
-        "symfony/sendgrid-mailer": "^5.3"
+        "swiftmailer/swiftmailer": "^6.0"
     }
     ,
     "require-dev": {

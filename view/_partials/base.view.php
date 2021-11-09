@@ -15,23 +15,15 @@
     <?php
     if(isset($error)) { ?>
         <div class="errorMessage"><?= $data['error'] ?></div>
-
         <?php
     }
-    else if(isset($success)){ ?>
+    if(isset($success)){ ?>
         <!--Display your success div with the message contained in $success-->
         <div class="successMessage"><?= $data['success'] ?></div>
         <?php
     }
-
-    <?php
-    }
-    else if(isset($success)){ ?>
-         <!--Display your success div with the message contained in $success-->
-        <div class="successMessage"><?= $data['success'] ?></div>
-    <?php
-    }
     ?>
+
     <!-- If the user is connected then I display the disconnection button-->
      <?php
         if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
@@ -42,6 +34,12 @@
                         Ajouter un lien
                     </a>
                 </div>
+                <div class="newLink">
+                    <a href="/index.php?controller=contact&action=display-add-contact-form">
+                        <i class="fas fa-envelope"></i>
+                        Nous contacter
+                    </a>
+                </div>
                 <div class="account" id="btnDisconnect">
                     <a href="/index.php?controller=user&action=logout" title="Déconnection">
                         <i class="fas fa-user-slash"></i>
@@ -49,6 +47,7 @@
                     </a>
                 </div>
             </header> <?php
+            // If the user is not logged in then I display the login page
         }
         else { ?>
             <header>
@@ -69,49 +68,6 @@
 
         }
 
-    ?>
-    <!-- If the user is connected then I display the disconnection button-->
-    <?php
-    if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
-        <header>
-            <div class="newLink">
-                <a href="/index.php?controller=link&action=display-add-link-form">
-                    <i class="fas fa-plus-square"></i>
-                    Ajouter un lien
-                </a>
-            </div>
-            <div class="newLink">
-                <a href="/index.php?controller=contact&action=display-add-contact-form">
-                    <i class="fas fa-phone"></i>
-                    Nous contacter
-                </a>
-            </div>
-            <div class="account" id="btnDisconnect">
-                <a href="/index.php?controller=user&action=logout" title="Déconnection">
-                    <i class="fas fa-user-slash"></i>
-                    Déconnexion
-                </a>
-            </div>
-        </header> <?php
-    }
-    else { ?>
-        <header>
-            <div id="newLink">
-                <a href="/index.php?controller=link">
-                    <i class="fas fa-plus-square"></i>
-                    Ajouter un lien
-                </a>
-            </div>
-            <div class="account" id="btnConnect">
-                <a href="/index.php?controller=user&action=login" title="Connexion">
-                    <i class="fas fa-user-circle"></i>
-                    Connexion
-                </a>
-            </div>
-        </header>
-        <?php
-
-    }
     ?>
 
     <!-- The html content from the ob_get_clean() -->

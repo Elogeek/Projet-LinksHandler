@@ -44,7 +44,7 @@ class BaseController {
     }
 
 
-    * Add an error message to be displayed.
+    /* Add an error message to be displayed.
     * @param string $message
     */
 

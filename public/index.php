@@ -11,6 +11,7 @@ use Elogeek\LinksHandler\Model\Entity\User;
 
 require '../vendor/autoload.php';
 
+
 session_start();
 
 if (
@@ -116,15 +117,16 @@ function routeUser(UserController $controller) {
         case 'display-register-user-form':
             $controller->displayRegisterUserForm();
             break;
-        /*
+
         case 'contact':
-            $controller->contact($_POST);
+            $controller->sendAnEmail();
+            echo "Envoi de mail avec Swift Mailer";
             break;
         // Display the contact form
         case 'display-add-contact-form':
             $controller->displayAddContactForm();
             break;
-       */
+
         default :
             $controller->login();
 

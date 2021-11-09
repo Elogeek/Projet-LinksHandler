@@ -6,6 +6,11 @@ use Elogeek\LinksHandler\Model\DB;
 use Elogeek\LinksHandler\Model\Entity\User;
 use Elogeek\LinksHandler\Model\Manager\RoleManager;
 use Elogeek\LinksHandler\Model\Manager\UserManager;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
+
+require_once 'public/assets/php/setting.php';
 
 class UserController extends BaseController {
 
@@ -122,24 +127,50 @@ class UserController extends BaseController {
         $this->render('contact');
     }
 
-    public function contact(){
-    /* if (isset($_POST["mail"], $_POST["subject"], $_POST['message'])) {
+    /**
+     * Send a mail via the library SwiftMailer
+     */
+    public function sendAnEmail() {
 
-          $email = DB::secureData($_POST['mail']);
-          $to = "elodiechristin@gmail.com";
-          $subject = DB::secureData($_POST['subject']);
-          $message = DB::secureData($_POST['message']);
-          $message = wordwrap($message, 70, "\r\n");
-          $headers = array(
-          'Reply-To' => $email,
-          'Cc' => 'elodiechristin@gmail.com',
-          'X-Mailer' => 'PHP/' . phpversion()
-          );
+        if($this->checkFormIsSubmitted() && isset($_POST["mail"], $_POST["subject"], $_POST['message'])) {
+            // I check if the contact form is correctly submitted and if everything is completed
+            $email = DB::secureData($_SESSION['mail']);
+            $subject = DB::secureData($_POST['subject']);
+            $message = DB::secureData($_POST['message']);
+            $message = wordwrap($message, 70, "\r\n");
 
-      mail($to, $subject, $message, $headers, "-f " . $email);
+            // Create the Transport
+            $transport = (new Swift_SmtpTransport(EMAIL_HOST,EMAIL_PORT))
+                ->setUsername(EMAIL_USERNAME)
+                ->setPassword(EMAIL_PASSWORD)
+                ->setEncryption(EMAIL_ENCRYPTION) //for gmail
+            ;
 
-      header("Location:homeLinks");
-      }*/
+            // Create the Mailer using your created Transport
+                    $mailer = new Swift_Mailer($transport);
+
+            // Create a message
+                    // Give the message a subject
+                    $message = (new Swift_Message($subject))
+                        // The sender of the email
+                        ->setFrom([$email])
+                        // The email support
+                        ->setTo(EMAIL_USERNAME)
+                        // The message here
+                        ->setBody($message,'text/html')
+                    ;
+
+            // Send a mail
+            $result = $mailer->send($message);
+
+          header("Location:homeLinks");
+          $this->setSuccessMessage("Votre email est bien envoyé au support technique.");
+        }
+        else {
+            header("Location:homeLinks");
+            $this->setErrorMessage("Une erreur est survenu lors de l'envoi de l'email.");
+        }
+
     }
 
 }
