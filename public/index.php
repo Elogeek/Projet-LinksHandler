@@ -13,12 +13,18 @@ require '../vendor/autoload.php';
 
 
 session_start();
+$isRegisterFormClicked = isset($_GET['action']) && $_GET['action'] === 'display-register-user-form';
+$isLoginFormClicked = isset($_POST['login-submit']);
+$isConnectedUser = isset($_SESSION['user']);
+echo "<pre>";
+var_dump([
+    'register clicked' => $isRegisterFormClicked,
+    'login cicked' => $isLoginFormClicked,
+    'user connected' => $isConnectedUser,
+]);
+echo "</pre>";
 
-if (
-    (!isset($_SESSION['id']) || $_SESSION['id'] !== true)
-    &&
-    (!isset($_POST['login-submit']) && $_GET['action'] !=='display-register-user-form')
-){
+if (!$isConnectedUser && (!$isRegisterFormClicked || !$isLoginFormClicked)){
     (new UserController())->showLogin();
 }
 else {
@@ -119,12 +125,12 @@ function routeUser(UserController $controller) {
             break;
 
         case 'contact':
-            $controller->sendAnEmail();
-            echo "Envoi de mail avec Swift Mailer";
+            $controller->sendAnEmail('', '','');
+            echo "Envoi de mail avec PHPMailer";
             break;
         // Display the contact form
-        case 'display-add-contact-form':
-            $controller->displayAddContactForm();
+        case 'display-contact-form':
+            $controller->displayContactForm();
             break;
 
         default :

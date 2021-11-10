@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="newLink">
-                    <a href="/index.php?controller=contact&action=display-add-contact-form">
+                    <a href="/index.php?controller=contact&action=display-contact-form">
                         <i class="fas fa-envelope"></i>
                         Nous contacter
                     </a>
