@@ -14,13 +14,11 @@
     <!--Display your error div with the message contained in $error-->
     <?php
     if(isset($error)) { ?>
-        <div class="errorMessage"><?= $data['error'] ?></div>
-        <?php
+        <div class="errorMessage"><?= $error ?></div> <?php
     }
     if(isset($success)){ ?>
         <!--Display your success div with the message contained in $success-->
-        <div class="successMessage"><?= $data['success'] ?></div>
-        <?php
+        <div class="successMessage"><?= $success ?></div> <?php
     }
     ?>
 

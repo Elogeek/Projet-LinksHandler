@@ -11,23 +11,15 @@ class LinkController extends BaseController {
      * Redirects into addLink page (display form add a link)
      */
     public function displayAddLinkForm(): void {
-
         $this->render("addLink");
-
     }
 
     /**
      * Display a homePage links
      */
     public function homeLinks(): void {
-        $linkManager = new LinkManager();
-        $allLinks = $linkManager->getLinks($_SESSION['user']);
-        if($allLinks === null) {
-            $allLinks = [];
-        }
-
         $this->render("homeLinks", [
-            "links" => $allLinks
+            "links" => (new LinkManager())->getLinks($_SESSION['user']) ?? []
         ]);
     }
 

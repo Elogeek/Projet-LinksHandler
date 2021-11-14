@@ -32,13 +32,10 @@ class UserController extends BaseController {
 
         $user = (new UserManager())->searchMail($mail);
         if ($user !== null && password_verify($pass, $user->getPass())) {
-
             $_SESSION['id'] = true;
             $_SESSION['user'] = $user;
-            header("Location: /index.php");
-        } else {
-            header("Location: /index.php");
         }
+        header("Location: /index.php");
     }
 
     /**
@@ -49,7 +46,6 @@ class UserController extends BaseController {
         $_SESSION = [];
         session_unset();
         session_destroy();
-
         header("Location: /index.php");
     }
 
@@ -79,26 +75,17 @@ class UserController extends BaseController {
             // Check all the data that the user has given
             $userM = new UserManager();
 
-            // If the email address is not taken
-            if ($this->$userM->searchMail($mail) !== null) {
-                $iAmError = true;
-                $this->setErrorMessage('Oups, cette adresse email est déjà prise');
-                echo 'cacao';
-            }
             // If the email address is valid
-            if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                $iAmAError = true;
+            if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 $this->setErrorMessage("Le format de l'adresse email n'est pas correct");
-                echo 'cacaoChaud';
             }
-            // If the two passwords are identical
-            if ($pass !== $passwordConfirm || !DB::checkPassword($pass)) {
-                $iAmAError = true;
-                $this->setErrorMessage("Les mots de passe ne correspondent pas ou ne respectent pas le critère de sécurité");
-                echo 'cacaoOla';
-
-                // If no errors were found, then registering user.
-                if (!$iAmAError) {
+            // If the email address is not taken
+            elseif($userM->searchMail($mail) !== null) {
+                $this->setErrorMessage('Oups, cette adresse email est déjà prise');
+            }
+            else {
+                // If the two passwords are identical
+                if ($pass === $passwordConfirm && DB::checkPassword($pass)) {
                     $user = new User();
                     $r = new RoleManager();
                     $user->setId(null);
@@ -106,23 +93,23 @@ class UserController extends BaseController {
                     $user->setName($name);
                     $user->setMail($mail);
                     $user->setPass($pass);
-                    $user->setRole($this->$r->getById(2));
+                    $user->setRole($r->getById(2)->getId());
 
                     // Save new user
-                    $userM->addUser($user);
-                    $this->setSuccessMessage("Votre compte a bien été créé.");
-                    // redirect to homeLinks
-                    $this->render('homeLinks');
-                } else {
-                    $this->render('homeLinks');
-                    // if error
-                    $this->setErrorMessage("Une erreur est survenue lors de la création de votre compte.");
+                    if($userM->addUser($user)) {
+                        $_SESSION['user'] = $user;
+                        $this->setSuccessMessage("Votre compte a bien été créé.");
+                    }
+                    else {
+                        $this->setErrorMessage("Impossible d'enregistrer cet utilisateur");
+                    }
                 }
-            } else {
-                $this->render('homeLinks');
-                $this->setErrorMessage('Tous les champs doivent être remplis');
+                else {
+                    $this->setErrorMessage("Les mots de passe ne correspondent pas ou ne respectent pas le critère de sécurité");
+                }
             }
 
+            (new LinkController())->homeLinks();
         }
 
     }
@@ -133,7 +120,7 @@ class UserController extends BaseController {
      */
     public function displayContactForm(): void {
             $this->render('contact');
-        }
+    }
 
     /**
      * Send a mail via the library SwiftMailer

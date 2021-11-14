@@ -13,18 +13,15 @@ require '../vendor/autoload.php';
 
 
 session_start();
-$isRegisterFormClicked = isset($_GET['action']) && $_GET['action'] === 'display-register-user-form';
+
+// If not connected user ===> display registration form  for a registration on the site
+
+$isRegisterFormClicked = isset($_GET['action']) && ($_GET['action'] === 'display-register-user-form' || $_GET['action'] === 'register');
 $isLoginFormClicked = isset($_POST['login-submit']);
 $isConnectedUser = isset($_SESSION['user']);
-echo "<pre>";
-var_dump([
-    'register clicked' => $isRegisterFormClicked,
-    'login cicked' => $isLoginFormClicked,
-    'user connected' => $isConnectedUser,
-]);
-echo "</pre>";
 
-if (!$isConnectedUser && (!$isRegisterFormClicked || !$isLoginFormClicked)){
+
+if (!$isConnectedUser && (!$isRegisterFormClicked && !$isLoginFormClicked)){
     (new UserController())->showLogin();
 }
 else {
@@ -128,7 +125,7 @@ function routeUser(UserController $controller) {
             $controller->sendAnEmail('', '','');
             echo "Envoi de mail avec PHPMailer";
             break;
-        // Display the contact form
+        // Display the contact form 
         case 'display-contact-form':
             $controller->displayContactForm();
             break;

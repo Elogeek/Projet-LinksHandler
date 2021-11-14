@@ -72,11 +72,7 @@ class DB {
         $minuscule = preg_match('@[a-z]@', $psswd);
         $number = preg_match('@[0-9]@', $psswd);
 
-        if(!$majuscule || !$minuscule || !$number || strlen($psswd) < 5 ) {
-            return false;
-        }
-
-        return true;
+        return !(!$majuscule || !$minuscule || !$number || strlen($psswd) < 5);
     }
 
     /**
