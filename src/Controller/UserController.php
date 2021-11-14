@@ -97,6 +97,7 @@ class UserController extends BaseController {
 
                     // Save new user
                     if($userM->addUser($user)) {
+                        // Stock user in the SESSION
                         $_SESSION['user'] = $user;
                         $this->setSuccessMessage("Votre compte a bien été créé.");
                     }
