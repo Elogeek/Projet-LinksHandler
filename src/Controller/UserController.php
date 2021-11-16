@@ -57,6 +57,15 @@ class UserController extends BaseController {
     }
 
     /**
+     *  Display user link statistics in graphic
+     */
+    public function getGraphStatLinks(): void {
+        $this->render("graphics");
+
+    }
+
+
+    /**
      *  Add a user in the BDD (register a user)
      * @param array $request
      */
@@ -109,7 +118,7 @@ class UserController extends BaseController {
                     $this->setErrorMessage("Les mots de passe ne correspondent pas ou ne respectent pas le critère de sécurité");
                 }
             }
-
+            // in all other cases === display homeLinks
             (new LinkController())->homeLinks();
         }
 
@@ -176,14 +185,15 @@ class UserController extends BaseController {
                 echo "Erreur l'email n'est pas envoyé" .'Mailer Error: ' . $mail->ErrorInfo;
             }
             // If success ==> display homeLinks with messageSuccess
-            header("Location:homeLinks");
             $this->setSuccessMessage("Votre email est bien envoyé au support technique.");
         }
         // If error ===> display homeLinks with messageError
         else {
-            header("Location:homeLinks");
             $this->setErrorMessage("Une erreur est survenu lors de l'envoi de l'email.");
         }
+        // in all other cases === display homeLinks
+        (new LinkController())->homeLinks();
 
     }
+
 }

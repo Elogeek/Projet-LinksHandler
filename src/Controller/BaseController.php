@@ -27,6 +27,8 @@ class BaseController {
             self::$successMessage = null;
         }
 
+
+
         ob_start();
         require __DIR__ . "/../../view/" . $view . ".view.php";
         $html = ob_get_clean();
@@ -34,6 +36,7 @@ class BaseController {
 
 
     }
+
 
     /**
      * Add a success message to be displayed.

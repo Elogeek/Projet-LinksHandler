@@ -129,6 +129,10 @@ function routeUser(UserController $controller) {
         case 'display-contact-form':
             $controller->displayContactForm();
             break;
+        // Display user link statistics
+        case 'get-graph-stat-link':
+            $controller->getGraphStatLinks();
+            break;
 
         default :
             $controller->login();

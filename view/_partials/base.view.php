@@ -33,9 +33,15 @@
                     </a>
                 </div>
                 <div class="newLink">
-                    <a href="/index.php?controller=contact&action=display-contact-form">
+                    <a href="/index.php?controller=user&action=display-contact-form">
                         <i class="fas fa-envelope"></i>
                         Nous contacter
+                    </a>
+                </div>
+                <div>
+                    <a href="/index.php?controller=user&action=get-graph-stat-link">
+                        <i class="fas fa-chart-line"></i>
+                        Mes statistiques
                     </a>
                 </div>
                 <div class="account" id="btnDisconnect">
