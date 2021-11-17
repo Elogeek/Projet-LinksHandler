@@ -18,9 +18,9 @@
 
         } ?>
         <br>
-        <div class="statLink total">Il y a <b><?= $totalLink ?></b> liens.</div>
-        <div class="statLink total">Il y a eu <b><?= $totalClick ?></b> click au total.</div>
-        <div id="canvasDiv"><canvas id="myChart" width="400" height="100"></canvas></div>
+        <div class="statLink total">Vous avez <b><?= $totalLink ?></b> liens en tous.</div>
+        <div class="statLink total">Vous avez clické <b><?= $totalClick ?></b> fois sur <?= $link->getName() ?>.</div>
+        <canvas id="myChart" width="400" height="100"></canvas>
     </div>
     <div class="homeBtn">
         <a href="index.php">Retour à mon profil</a>
