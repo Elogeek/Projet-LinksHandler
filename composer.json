@@ -16,7 +16,8 @@
     "require": {
       "ext-pdo": "*",
         "muffeen/url-status": "^0.2.0",
-        "phpmailer/phpmailer": "dev-master"
+        "phpmailer/phpmailer": "dev-master",
+        "microweber/screen": "^1.0"
     }
     ,
     "require-dev": {

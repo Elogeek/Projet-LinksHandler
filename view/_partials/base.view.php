@@ -26,25 +26,25 @@
      <?php
         if(isset($_SESSION['id']) && $_SESSION['id'] === TRUE) { ?>
             <header>
-                <div class="newLink">
+                <div class="flex-item">
                     <a href="/index.php?controller=link&action=display-add-link-form">
                         <i class="fas fa-plus-square"></i>
                         Ajouter un lien
                     </a>
                 </div>
-                <div class="newLink">
+                <div class="flex-item">
                     <a href="/index.php?controller=user&action=display-contact-form">
                         <i class="fas fa-envelope"></i>
                         Nous contacter
                     </a>
                 </div>
-                <div>
+                <div class="flex-item">
                     <a href="/index.php?controller=user&action=get-graph-stat-link">
                         <i class="fas fa-chart-line"></i>
                         Mes statistiques
                     </a>
                 </div>
-                <div class="account" id="btnDisconnect">
+                <div class="flex-item" id="btnDisconnect">
                     <a href="/index.php?controller=user&action=logout" title="Déconnection">
                         <i class="fas fa-user-slash"></i>
                         Déconnexion
@@ -55,13 +55,13 @@
         }
         else { ?>
             <header>
-                <div id="newLink">
+                <div id="flex-item">
                     <a href="/index.php?controller=link">
                         <i class="fas fa-plus-square"></i>
                         Ajouter un lien
                     </a>
                 </div>
-                <div class="account" id="btnConnect">
+                <div class="flex-item" id="btnConnect">
                     <a href="/index.php?controller=user&action=login" title="Connexion">
                         <i class="fas fa-user-circle"></i>
                         Connexion
@@ -79,5 +79,9 @@
 
 </div>
 
+
+
+<script src="/node_modules/chart.js/dist/chart.js"></script>
+<script src="public/assets/js/graphics.js" type="javascript"></script>
 </body>
 </html>

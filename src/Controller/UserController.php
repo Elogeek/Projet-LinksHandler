@@ -5,6 +5,7 @@ namespace Elogeek\LinksHandler\Controller;
 use Elogeek\LinksHandler\ConfigFile\Configs;
 use Elogeek\LinksHandler\Model\DB;
 use Elogeek\LinksHandler\Model\Entity\User;
+use Elogeek\LinksHandler\Model\Manager\LinkManager;
 use Elogeek\LinksHandler\Model\Manager\RoleManager;
 use Elogeek\LinksHandler\Model\Manager\UserManager;
 
@@ -61,9 +62,23 @@ class UserController extends BaseController {
      */
     public function getGraphStatLinks(): void {
         $this->render("graphics");
-
+        // si l'utilisateur est connecté donc n'est pas null alors affiche le graphic
+        if ($_SESSION['user'] !== null) {
+             $this->getStatGraph();
+        }
     }
 
+    /**
+     * Return all data of user
+     */
+    public function getStatGraph(): array {
+        $allLinks = (new LinkManager())->getLinks($_SESSION['user']);
+        $arrayLinks = [];
+        foreach($allLinks as $link) {
+            $arrayLinks[] = ["id" => $link->getId(), "href" => $link->getHref(), "title" => $link->getTitle(), "name" => $link->getName(), "img" => $link->getImg(), "click" => $link->getClick()];
+        }
+        return $arrayLinks;
+    }
 
     /**
      *  Add a user in the BDD (register a user)
@@ -141,58 +156,46 @@ class UserController extends BaseController {
             // I check if the contact form is correctly submitted and if everything is completed
             $senderMail = DB::secureData($_SESSION['mail']);
             $subjectMail = DB::secureData($_POST['subject']);
-            $message = DB::secureData($_POST['message']);
-            $message = wordwrap($message, 70, "\r\n");
+            $message = DB::secureData($_POST['message'] && wordwrap($message,70,"\r\n"));
 
             // create instance de la classe PhpMailer (true === activation execptions)
             $mail = new PHPMailer(True);
 
             try {
                 //Server settings
-                //Enable verbose debug output
                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-                //Send using SMTP
                 $mail->isSMTP();
-                //Set the SMTP server to send through
                 $mail->Host = Configs::HOST;
-                // Enable SMTP authentication
                 $mail->SMTPAuth = true;
-                //SMTP username (=== The sending email address)
                 $mail->Username = Configs::USERNAME;
-                //SMTP password (=== the password of the sending email address)
                 $mail->Password =  Configs::PASSWORD;
-                //Enable implicit TLS encryption
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                 $mail->Port = 465;
 
-                // The recipient
-                $mail->setFrom('supportTechnique@example.com', 'Administrateur');
-                // Customize the sender
-                $mail->addAddress($senderMail);
+                $mail->setFrom($senderMail);
+                $mail->addAddress('supportTechniqueLK@gmail.com','support technique Link-Handler');
 
-                //Content of the email
-
-                //Set email format to HTML
+                //Content of the email, and set email format to HTML
                 $mail->isHTML(true);
                 $mail->Subject = $subjectMail;
                 $mail->Body = $message;
                 //send a mail
-               if($mail->send()) { }
-                echo "Le message a bien été envoyé !";
+               if($mail->send()) {
+                   // If success ==> display homeLinks with messageSuccess
+                   $this->setSuccessMessage("Votre email est bien envoyé au support technique.");
+               }
             }
+            // If error ===> display homeLinks with messageError
             catch (Exception $e) {
                 echo "Erreur l'email n'est pas envoyé" .'Mailer Error: ' . $mail->ErrorInfo;
+                $this->setErrorMessage("Une erreur est survenu lors de l'envoi de l'email.");
             }
-            // If success ==> display homeLinks with messageSuccess
-            $this->setSuccessMessage("Votre email est bien envoyé au support technique.");
+
         }
-        // If error ===> display homeLinks with messageError
+        // In all other cases === display homeLinks
         else {
-            $this->setErrorMessage("Une erreur est survenu lors de l'envoi de l'email.");
+            (new LinkController())->homeLinks();
         }
-        // in all other cases === display homeLinks
-        (new LinkController())->homeLinks();
 
     }
 

@@ -10,7 +10,8 @@ class Link {
     private ?string $target;
     private ?string $name;
     private ?int $userFk;
-
+    private ?string $img;
+    private ?int $click;
 
     /**
      * Link constructor.
@@ -20,14 +21,18 @@ class Link {
      * @param string|null $target
      * @param string|null $name
      * @param int|null $userFk
+     * @param string|null $img
+     * @param int|null $click
      */
-    public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null, int $userFk = null) {
+    public function __construct(int $id = null, string $href = null, string $title = null, string $target = null, string $name = null, int $userFk = null,string $img = null, int $click = null) {
         $this->id = $id;
         $this->href = $href;
         $this->title = $title;
         $this->target = $target;
         $this->name = $name;
         $this->userFk = $userFk;
+        $this->img = $img;
+        $this->click = $click;
 
     }
 
@@ -134,6 +139,38 @@ class Link {
      */
     public function setUserFk(?int $userFk): Link {
         $this->userFk = $userFk;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImg(): ?string {
+        return $this->img;
+    }
+
+    /**
+     * @param string|null $img
+     * @return Link
+     */
+    public function setImg(?string $img): Link {
+        $this->img = $img;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getClick(): ?int {
+        return $this->click;
+    }
+
+    /**
+     * @param int|null $click
+     * @return Link
+     */
+    public function setClick(?int $click): Link {
+        $this->click = $click;
         return $this;
     }
 

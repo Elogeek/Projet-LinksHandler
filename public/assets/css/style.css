@@ -28,14 +28,6 @@ header i {
     font-size: 3rem;
 }
 
-#account {
-    background-color: steelblue;
-    border-radius: 2rem;
-    position: absolute;
-    right: 1rem;
-    padding: 1rem;
-}
-
 header a:hover {
     cursor: pointer;
     color: crimson;
@@ -127,17 +119,17 @@ form {
     align-items: center;
 }
 
-.contLinkAdd label, #loginContainer label,#updateLink label,#designDeleteLink label, #containerRegister label {
+.contLinkAdd label, #loginContainer label,#updateLink label,#designDeleteLink label, #containerRegister label,.formContact label {
     padding: 1rem;
 }
 
-.contLinkAdd input, .userConnect input,#updateLink input, #containerRegister input,#divRegister input {
+.contLinkAdd input, .userConnect input,#updateLink input, #containerRegister input,#divRegister input, .formContact input {
     width: 60vh;
     height: 3.5rem;
 }
 
 /* Design link homeBtn (register and back) */
-#loginContainer .homeBtn, #containerRegister .homeBtn {
+#loginContainer .homeBtn, #containerRegister .homeBtn, .formContact .homeBtn {
     text-align: center;
     font-weight: bold;
 }
@@ -158,7 +150,7 @@ input[type=submit] {
     width: 21vh;
 }
 
-#loginContainer, .contLinkAdd, #updateLink,#designDeleteLink,#containerRegister {
+#loginContainer, .contLinkAdd, #updateLink,#designDeleteLink,#containerRegister,.formContact {
     padding: 2rem;
     margin: 2rem;
     background-color: darkgray;
@@ -167,11 +159,11 @@ input[type=submit] {
     font-size: 2rem;
 }
 
-#loginContainer div, #addLinkDiv div,#updateLink div,#designDeleteLink div, #containerRegister div {
+#loginContainer div, #addLinkDiv div,#updateLink div,#designDeleteLink div, #containerRegister div, #containerContact div {
     margin-top: 1.5rem;
 }
 
-#loginContainer a, #addLinkDiv a,#updateLink a,#designDeleteLink a, #containerRegister a {
+#loginContainer a, #addLinkDiv a,#updateLink a,#designDeleteLink a, #containerRegister a, #containerContact a {
     color: white;
     margin-left:2rem;
     text-decoration-line: none;
@@ -248,6 +240,12 @@ input[type=submit] {
     .linkImage {
         position: relative;
         right: 1.4rem;
+    }
+    @media screen  and (max-width: 256px){
+        .linkImage {
+            margin: 0 0 0 -1rem;
+        }
+
     }
 
 }
