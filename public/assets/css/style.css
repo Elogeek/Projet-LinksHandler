@@ -9,7 +9,7 @@
 }
 
 html {
-    font-size: 62.5%;
+   font-size: 62.5%;
 }
 
 body{
@@ -19,17 +19,51 @@ body{
 
 /* Design links.view*/
 
-.container, .homePage {
+.containerLinks {
+    width: 300vh;
+}
+
+.containerLinks, .homePage {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0.8rem;
     text-align: center;
+
 }
 
 h1 {
     margin: 3rem 0 0 0.8rem;
+}
+
+/* Design Header (menu of the site) */
+header {
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+header i {
+    font-size: 3rem;
+}
+
+header a:hover {
+    cursor: pointer;
+    color: crimson;
+}
+
+header a {
+    font-size: 1.8rem;
+    color: orchid;
+    text-decoration: none;
+}
+
+.flex-item {
+    margin-right: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Design icons update and delete a link */

@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<div id="container">
+<div id="containerLinks">
     <!--Display your error div with the message contained in $error-->
     <?php
     if(isset($error)) { ?>
