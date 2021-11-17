@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Links Handler</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/menu.css">
     <script src="https://kit.fontawesome.com/e3ddf954eb.js" crossorigin="anonymous"></script>
 
 </head>

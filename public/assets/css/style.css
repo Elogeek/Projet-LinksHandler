@@ -17,28 +17,6 @@ body{
     display: flex;
 }
 
-/* Design Header (menu of the site) */
-header {
-    padding: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-header i {
-    font-size: 3rem;
-}
-
-header a:hover {
-    cursor: pointer;
-    color: crimson;
-}
-
-header a {
-    font-size: 1.8rem;
-    color: orchid;
-    text-decoration: none;
-}
-
 /* Design links.view*/
 
 .container, .homePage {
